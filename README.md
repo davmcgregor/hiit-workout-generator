@@ -27,7 +27,7 @@ I want to be able to press puse during a workout
 ```
 As a user,
 To have control over a session,
-I want to be able to press skip during a workout/break to move to the next 3 second beeper countdown
+I want to be able to press skip during a workout/break to jump forward 10 seconds (or to the next 3 second beeper countdown)
 ```
 ```
 As a user,
