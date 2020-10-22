@@ -26,8 +26,13 @@ I want to be able to press puse during a workout
 ```
 ```
 As a user,
+To have control over a session,
+I want to be able to press skip during a workout/break to move to the next 3 second beeper countdown
+```
+```
+As a user,
 To know when a segment is starting/finishing,
-I want to hear a beeper countdown
+I want to hear a 3 second beeper countdown
 ```
 ```
 As a user,
@@ -41,6 +46,11 @@ I want to see a progress bar
 ```
 ```
 As a user,
+To get a complete view of my workout,
+I want to see the progress bar to name all exercises in a round, and what round out of the total I am on
+```
+```
+As a user,
 To know when a segment is starting/finishing,
 I want to hear a beeper countdown
 ```
@@ -48,6 +58,11 @@ I want to hear a beeper countdown
 As a user,
 To know when a segment is starting/finishing,
 I want to hear a beeper countdown
+```
+```
+As a user,
+On completing a workout,
+I want to see a celebratory sceen
 ```
 ```
 As a user,
@@ -63,13 +78,18 @@ I want it to be responsive
 ### Extra
 ```
 As a user,
+To keep me motivated during rest breaks,
+I want to see random motivational quotes and messages
+```
+```
+As a user,
 To keep challenging myself,
 I want to be able to build custom workouts
 ```
 ```
 As a user,
-To keep me motivated during rest breaks,
-I want to see motivational quotes and messages
+To keep challenging myself,
+I want to be able to build custom workouts
 ```
 
 
