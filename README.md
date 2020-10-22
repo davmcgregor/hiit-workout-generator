@@ -56,6 +56,11 @@ I want to hear a beeper countdown
 ```
 ```
 As a user,
+To prepare for my exercises,
+I want to know which ones require a dumbell and which are bodyweight
+```
+```
+As a user,
 To know when a segment is starting/finishing,
 I want to hear a beeper countdown
 ```
