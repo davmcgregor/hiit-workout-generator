@@ -1,4 +1,4 @@
-export const AllExercises = [
+const AllExercises = [
   { category: 'Arms', name: 'Bicep Curl', bodyweight: false },
   { category: 'Arms', name: 'Super Slow Bicep Curl', bodyweight: false },
   { category: 'Arms', name: 'Super Slow Bicep Curl', bodyweight: false },
@@ -50,3 +50,5 @@ export const AllExercises = [
   { category: 'Core', name: 'Downward Dog', bodyweight: true },
   { category: 'Core', name: 'Plank with Leg Raises', bodyweight: true },
 ];
+
+export default AllExercises

@@ -4,12 +4,14 @@ import { getWorkout } from '../../actions/workout';
 
 import PropTypes from 'prop-types';
 
-const Landing = ({ workout, getWorkout }) => {
+const Landing = ({ exercises, getWorkout }) => {
   useEffect(() => {
     getWorkout();
   }, [getWorkout]);
 
-  const workoutList = workout.map((exercise) => <li>{exercise}</li>);
+  const workoutList = exercises.map((exercise, index) => (
+    <li key={index}>{exercise.name}</li>
+  ));
   return (
     <Fragment>
       <ul>{workoutList}</ul>
@@ -19,11 +21,11 @@ const Landing = ({ workout, getWorkout }) => {
 
 Landing.propTypes = {
   getWorkout: PropTypes.func.isRequired,
-  workout: PropTypes.array.isRequired,
+  exercises: PropTypes.array.isRequired,
 };
 
 const mapStateToProps = (state) => ({
-  workout: state.workout,
+  exercises: state.workout.exercises,
 });
 
 export default connect(mapStateToProps, { getWorkout })(Landing);
