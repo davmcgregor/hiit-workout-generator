@@ -4,7 +4,7 @@ import { getWorkout } from '../../actions/workout';
 
 import PropTypes from 'prop-types';
 
-const Landing = ({ exercises, getWorkout }) => {
+const Landing = ({ getWorkout, workout: { exercises } }) => {
   useEffect(() => {
     getWorkout();
   }, [getWorkout]);
@@ -14,6 +14,7 @@ const Landing = ({ exercises, getWorkout }) => {
   ));
   return (
     <Fragment>
+      <button onClick={() => getWorkout()}>Random</button>
       <ul>{workoutList}</ul>
     </Fragment>
   );
@@ -21,11 +22,11 @@ const Landing = ({ exercises, getWorkout }) => {
 
 Landing.propTypes = {
   getWorkout: PropTypes.func.isRequired,
-  exercises: PropTypes.array.isRequired,
+  workout: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = (state) => ({
-  exercises: state.workout.exercises,
+  workout: state.workout,
 });
 
 export default connect(mapStateToProps, { getWorkout })(Landing);
