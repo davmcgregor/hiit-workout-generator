@@ -4,7 +4,7 @@
 
 ### Core functionality
 
-```
+
 ~~As a user,
 When I visit the app,
 I want to be presented with a random workout~~
