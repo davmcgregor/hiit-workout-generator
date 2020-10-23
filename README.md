@@ -16,6 +16,11 @@ I want to be able to press a 'random button'
 ```
 ```
 As a user,
+To randomise my experience,
+I want to calculate random rounds, and exercise amounts
+```
+```
+As a user,
 To start a workout,
 I want to be able to press a start to begin
 ```
