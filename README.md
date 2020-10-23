@@ -37,7 +37,7 @@ I want to hear a 3 second beeper countdown
 ```
 As a user,
 To know my progress within a segment,
-I want to see a countdown
+I want to constantly see a countdown for my workout/rest
 ```
 ```
 As a user,
@@ -81,6 +81,11 @@ I want it to be responsive
 ```
 
 ### Extra
+```
+As a user,
+To keep up motivation,
+I want to see a 'last round' alert on the final round
+```
 ```
 As a user,
 To keep me motivated during rest breaks,
