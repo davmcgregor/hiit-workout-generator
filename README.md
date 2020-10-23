@@ -5,14 +5,14 @@
 ### Core functionality
 
 ```
-As a user,
+~~As a user,
 When I visit the app,
-I want to be presented with a random workout
+I want to be presented with a random workout~~
 ```
 ```
-As a user,
+~~As a user,
 To see alternative workouts,
-I want to be able to press a 'random button'
+I want to be able to press a 'random button'~~
 ```
 ```
 As a user,
