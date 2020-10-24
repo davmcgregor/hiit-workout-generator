@@ -27,7 +27,7 @@ I want to be able to press a start to begin
 ```
 As a user,
 To take a break,
-I want to be able to press puse during a workout
+I want to be able to press pause during a workout
 ```
 ```
 As a user,
