@@ -4,7 +4,7 @@ import { getWorkout } from '../../actions/workout';
 
 import PropTypes from 'prop-types';
 
-const Landing = ({ getWorkout, workout: { exercises } }) => {
+const Landing = ({ getWorkout, workout: { exercises, rounds } }) => {
   useEffect(() => {
     getWorkout();
   }, [getWorkout]);
@@ -14,8 +14,9 @@ const Landing = ({ getWorkout, workout: { exercises } }) => {
   ));
   return (
     <Fragment>
+      <h1>{rounds} Rounds of {exercises.length} Exercises = {rounds * exercises.length} Minutes</h1>
       <button onClick={() => getWorkout()}>Random</button>
-      <ul>{workoutList}</ul>
+      <ol>{workoutList}</ol>
     </Fragment>
   );
 };

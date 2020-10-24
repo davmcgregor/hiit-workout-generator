@@ -1,17 +1,17 @@
 const random = (array) => {
-  let m = array.length,
-    t,
-    i;
+  let currentIndex = array.length,
+    temporaryValue,
+    randomIndex;
 
   // While there remain elements to shuffle…
-  while (m) {
+  while (currentIndex) {
     // Pick a remaining element…
-    i = Math.floor(Math.random() * m--);
+    randomIndex = Math.floor(Math.random() * currentIndex--);
 
     // And swap it with the current element.
-    t = array[m];
-    array[m] = array[i];
-    array[i] = t;
+    temporaryValue = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = temporaryValue;
   }
 
   return array;
