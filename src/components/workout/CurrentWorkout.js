@@ -16,20 +16,32 @@ const CurrentWorkout = ({
     workoutInProgress,
   },
 }) => {
-  const [exercise, setExercise] = useState(0);
-  const [round, setRound] = useState(0);
+  const [counter, setCounter] = useState(0);
 
+  // change logic
   useEffect(() => {
-    setExercise(currentExerciseIndex);
-    setRound(currentRoundIndex);
-  }, [workoutInProgress]);
+    workoutInProgress && setInterval(() => changeExercise(), on * 1000);
+  }, [currentComponent]);
+
+  // set counter
+  useEffect(() => {
+    setCounter(on);
+  }, [workoutInProgress, currentExerciseIndex]);
+
+  // counter
+  useEffect(() => {
+    const timer =
+      counter > 0 && setInterval(() => setCounter(counter - 1), 1000);
+    return () => clearInterval(timer);
+  }, [currentExerciseIndex, counter]);
 
   return (
     currentComponent === 'CurrentWorkout' && (
       <Fragment>
-        <h2>
+        <h2>Counter: {counter}</h2>
+        <h3>
           Round {currentRoundIndex + 1} of {rounds}
-        </h2>
+        </h3>
         <h1>
           Exercise {currentExerciseIndex + 1}:{' '}
           {exercises[currentExerciseIndex]['name']}
