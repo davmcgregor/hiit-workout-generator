@@ -7,7 +7,7 @@ export default function (state = initialState, action) {
 
   switch (type) {
     case GET_WORKOUT:
-      return { ...state, exercises: payload.randomExercises, rounds: payload.randomRounds,current: null };
+      return { ...state, exercises: payload.randomExercises, rounds: payload.randomRounds, current: null };
     default:
       return state;
   }
