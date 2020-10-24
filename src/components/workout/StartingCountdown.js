@@ -2,21 +2,21 @@ import React, { Fragment, useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-const StartingCountdown = ({ workout: { current } }) => {
+const StartingCountdown = ({ workout: { currentComponent } }) => {
   const [counter, setCounter] = useState(10);
 
   useEffect(() => {
-    setCounter(10);
-  }, [current]);
+    setCounter(3);
+  }, [currentComponent]);
 
   useEffect(() => {
     const timer =
       counter > 0 && setInterval(() => setCounter(counter - 1), 1000);
     return () => clearInterval(timer);
-  }, [current, counter]);
+  }, [currentComponent, counter]);
 
   return (
-    current === 'StartingCountdown' && <Fragment>Begin in: {counter}</Fragment>
+    currentComponent === 'StartingCountdown' && <Fragment>Begin in: {counter}</Fragment>
   );
 };
 

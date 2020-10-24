@@ -1,3 +1,6 @@
 export const GET_WORKOUT = 'GET_WORKOUT';
 export const START_COUNTDOWN = 'START_COUNTDOWN';
 export const END_COUNTDOWN = 'END_COUNTDOWN';
+export const CHANGE_EXERCISE = 'CHANGE_EXERCISE';
+export const CHANGE_ROUND = 'CHANGE_ROUND';
+

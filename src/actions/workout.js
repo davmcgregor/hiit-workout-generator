@@ -1,4 +1,10 @@
-import { GET_WORKOUT, START_COUNTDOWN, END_COUNTDOWN } from './types';
+import {
+  GET_WORKOUT,
+  START_COUNTDOWN,
+  END_COUNTDOWN,
+  CHANGE_EXERCISE,
+  CHANGE_ROUND,
+} from './types';
 import generateWorkout from '../utils/generateWorkout';
 
 export const getWorkout = () => (dispatch) => {
@@ -10,10 +16,22 @@ export const getWorkout = () => (dispatch) => {
   });
 };
 
-export const startCountdown = (timeout = 11000) => (dispatch) => {
+export const startCountdown = (timeout = 4000) => (dispatch) => {
   dispatch({
     type: START_COUNTDOWN,
   });
 
   setTimeout(() => dispatch({ type: END_COUNTDOWN }), timeout);
+};
+
+export const changeExercise = () => (dispatch) => {
+  dispatch({
+    type: CHANGE_EXERCISE,
+  });
+};
+
+export const changeRound = () => (dispatch) => {
+  dispatch({
+    type: CHANGE_ROUND,
+  });
 };

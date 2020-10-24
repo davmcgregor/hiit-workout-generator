@@ -1,12 +1,11 @@
 import React, { Fragment } from 'react';
 import './App.css';
 
-import { Landing } from './components';
+import { Landing, StartingCountdown, CurrentWorkout } from './components';
 
 // Redux
 import { Provider } from 'react-redux';
 import store from './store';
-import StartingCountdown from './components/workout/StartingCountdown';
 
 const App = () => {
   return (
@@ -14,6 +13,7 @@ const App = () => {
       <Fragment>
         <Landing />
         <StartingCountdown />
+        <CurrentWorkout />
       </Fragment>
     </Provider>
   );

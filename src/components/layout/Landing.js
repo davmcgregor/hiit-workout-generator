@@ -11,7 +11,7 @@ const Landing = ({
     exercises,
     rounds,
     difficulty: { level, on, off },
-    current,
+    currentComponent,
   },
 }) => {
   useEffect(() => {
@@ -23,7 +23,7 @@ const Landing = ({
   ));
 
   return (
-    current === 'Landing' && (
+    currentComponent === 'Landing' && (
       <Fragment>
         <h1>
           {rounds} Rounds of {exercises.length} Exercises ={' '}
