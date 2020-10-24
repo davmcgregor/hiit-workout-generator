@@ -1,1 +1,2 @@
 export const GET_WORKOUT = 'GET_WORKOUT'
+export const START_COUNTDOWN = 'START_COUNTDOWN'

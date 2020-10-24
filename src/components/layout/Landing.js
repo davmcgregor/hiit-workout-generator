@@ -1,10 +1,14 @@
 import React, { Fragment, useEffect } from 'react';
 import { connect } from 'react-redux';
-import { getWorkout } from '../../actions/workout';
+import { getWorkout, startCountdown } from '../../actions/workout';
 
 import PropTypes from 'prop-types';
 
-const Landing = ({ getWorkout, workout: { exercises, rounds } }) => {
+const Landing = ({
+  startCountdown,
+  getWorkout,
+  workout: { exercises, rounds, current },
+}) => {
   useEffect(() => {
     getWorkout();
   }, [getWorkout]);
@@ -12,17 +16,25 @@ const Landing = ({ getWorkout, workout: { exercises, rounds } }) => {
   const workoutList = exercises.map((exercise, index) => (
     <li key={index}>{exercise.name}</li>
   ));
+
   return (
-    <Fragment>
-      <h1>{rounds} Rounds of {exercises.length} Exercises = {rounds * exercises.length} Minutes</h1>
-      <button onClick={() => getWorkout()}>Random</button>
-      <ol>{workoutList}</ol>
-    </Fragment>
+    current === 'Landing' && (
+      <Fragment>
+        <h1>
+          {rounds} Rounds of {exercises.length} Exercises ={' '}
+          {rounds * exercises.length} Minutes
+        </h1>
+        <button onClick={() => getWorkout()}>Random</button>
+        <button onClick={() => startCountdown()}>Begin</button>
+        <ol>{workoutList}</ol>
+      </Fragment>
+    )
   );
 };
 
 Landing.propTypes = {
   getWorkout: PropTypes.func.isRequired,
+  startCountdown: PropTypes.func.isRequired,
   workout: PropTypes.object.isRequired,
 };
 
@@ -30,4 +42,6 @@ const mapStateToProps = (state) => ({
   workout: state.workout,
 });
 
-export default connect(mapStateToProps, { getWorkout })(Landing);
+export default connect(mapStateToProps, { getWorkout, startCountdown })(
+  Landing
+);
