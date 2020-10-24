@@ -8,9 +8,11 @@ import {
 
 const initialState = {
   exercises: [],
+  fullWorkout: [],
   rounds: null,
   difficulty: {},
   currentComponent: 'Landing',
+  currentExercise: {},
   currentExerciseIndex: 0,
   currentRoundIndex: 0,
   workoutInProgress: false,
@@ -24,9 +26,11 @@ export default function (state = initialState, action) {
       return {
         ...state,
         exercises: payload.randomExercises,
+        fullWorkout: payload.fullWorkout,
         rounds: payload.randomRounds,
         difficulty: payload.randomDifficulty,
         currentComponent: 'Landing',
+        currentExercise: payload.fullWorkout[state.currentExerciseIndex],
       };
     case START_COUNTDOWN:
       return {
@@ -42,6 +46,7 @@ export default function (state = initialState, action) {
     case CHANGE_EXERCISE:
       return {
         ...state,
+        currentExercise: state.fullWorkout[state.currentExerciseIndex + 1],
         currentExerciseIndex: state.currentExerciseIndex + 1,
       };
     case CHANGE_ROUND:

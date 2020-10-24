@@ -7,10 +7,9 @@ const CurrentWorkout = ({
   changeExercise,
   changeRound,
   workout: {
-    exercises,
     rounds,
-    difficulty: { level, on, off },
     currentComponent,
+    currentExercise: { name, interval },
     currentExerciseIndex,
     currentRoundIndex,
     workoutInProgress,
@@ -20,13 +19,15 @@ const CurrentWorkout = ({
 
   // change logic
   useEffect(() => {
-    workoutInProgress && setInterval(() => changeExercise(), on * 1000);
-  }, [currentComponent]);
+    const exerciseChanger =
+      workoutInProgress && setInterval(() => changeExercise(), interval * 1000);
+    return () => clearInterval(exerciseChanger);
+  }, [currentComponent, changeExercise, interval]);
 
   // set counter
   useEffect(() => {
-    setCounter(on);
-  }, [workoutInProgress, currentExerciseIndex]);
+    setCounter(interval);
+  }, [workoutInProgress, interval]);
 
   // counter
   useEffect(() => {
@@ -43,8 +44,7 @@ const CurrentWorkout = ({
           Round {currentRoundIndex + 1} of {rounds}
         </h3>
         <h1>
-          Exercise {currentExerciseIndex + 1}:{' '}
-          {exercises[currentExerciseIndex]['name']}
+          {currentExerciseIndex + 1} {name}
         </h1>
         <button onClick={() => changeExercise()}>Increment Exercise</button>
         <button onClick={() => changeRound()}>Increment Round</button>
