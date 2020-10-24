@@ -1,2 +1,3 @@
-export const GET_WORKOUT = 'GET_WORKOUT'
-export const START_COUNTDOWN = 'START_COUNTDOWN'
+export const GET_WORKOUT = 'GET_WORKOUT';
+export const START_COUNTDOWN = 'START_COUNTDOWN';
+export const END_COUNTDOWN = 'END_COUNTDOWN';

@@ -1,4 +1,4 @@
-import { GET_WORKOUT, START_COUNTDOWN } from '../actions/types';
+import { GET_WORKOUT, START_COUNTDOWN, END_COUNTDOWN } from '../actions/types';
 
 const initialState = { exercises: [], current: 'Landing' };
 
@@ -16,8 +16,13 @@ export default function (state = initialState, action) {
     case START_COUNTDOWN:
       return {
         ...state,
-        current: 'StartingCountdown'
-      }
+        current: 'StartingCountdown',
+      };
+    case END_COUNTDOWN:
+      return {
+        ...state,
+        current: 'Landing',
+      };
     default:
       return state;
   }
