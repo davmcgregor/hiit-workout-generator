@@ -7,7 +7,12 @@ import PropTypes from 'prop-types';
 const Landing = ({
   startCountdown,
   getWorkout,
-  workout: { exercises, rounds, current },
+  workout: {
+    exercises,
+    rounds,
+    difficulty: { level, on, off },
+    current,
+  },
 }) => {
   useEffect(() => {
     getWorkout();
@@ -24,6 +29,9 @@ const Landing = ({
           {rounds} Rounds of {exercises.length} Exercises ={' '}
           {rounds * exercises.length} Minutes
         </h1>
+        <h2>
+          Difficulty Level: {level} - {on} Second On // {off} Seconds Off
+        </h2>
         <button onClick={() => getWorkout()}>Random</button>
         <button onClick={() => startCountdown()}>Begin</button>
         <ol>{workoutList}</ol>

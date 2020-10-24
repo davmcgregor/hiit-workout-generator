@@ -11,6 +11,7 @@ export default function (state = initialState, action) {
         ...state,
         exercises: payload.randomExercises,
         rounds: payload.randomRounds,
+        difficulty: payload.randomDifficulty,
         current: 'Landing',
       };
     case START_COUNTDOWN:
