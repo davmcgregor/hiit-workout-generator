@@ -62,11 +62,6 @@ As a user,
 To know when a segment is starting/finishing,
 I want to hear a 3 second beeper countdown
 ```
-```
-As a user,
-To know my progress for the entire workout,
-I want to see a progress bar
-```
 
 ### Extra
 ```
