@@ -15,7 +15,7 @@ const CurrentWorkout = ({
     rounds,
     fullWorkout,
     currentComponent,
-    currentExercise: { name, interval },
+    currentExercise: { name, interval, category, bodyweight },
     currentExerciseIndex,
     currentRoundIndex,
     workoutInProgress,
@@ -27,7 +27,7 @@ const CurrentWorkout = ({
   useEffect(() => {
     const changeAction = () => {
       if (
-        (currentRoundIndex === rounds -1) &
+        (currentRoundIndex === rounds - 1) &
         (currentExerciseIndex === fullWorkout.length - 1)
       ) {
         finishWorkout();
@@ -72,7 +72,7 @@ const CurrentWorkout = ({
           Round {currentRoundIndex + 1} of {rounds}
         </h3>
         <h1>
-          {currentExerciseIndex + 1} {name}
+          {name} {category === 'Rest' ? null : bodyweight && '(Bodyweight)'}
         </h1>
         <button onClick={() => changeExercise()}>Increment Exercise</button>
         <button onClick={() => changeRound()}>Increment Round</button>
