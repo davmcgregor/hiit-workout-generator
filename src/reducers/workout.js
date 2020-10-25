@@ -4,6 +4,7 @@ import {
   END_COUNTDOWN,
   CHANGE_EXERCISE,
   CHANGE_ROUND,
+  FINISH_WORKOUT,
 } from '../actions/types';
 
 const initialState = {
@@ -36,6 +37,9 @@ export default function (state = initialState, action) {
       return {
         ...state,
         currentComponent: 'StartingCountdown',
+        currentExercise: state.fullWorkout[0],
+        currentExerciseIndex: 0,
+        currentRoundIndex: 0,
       };
     case END_COUNTDOWN:
       return {
@@ -55,6 +59,12 @@ export default function (state = initialState, action) {
         currentRoundIndex: state.currentRoundIndex + 1,
         currentExerciseIndex: 0,
         currentExercise: state.fullWorkout[0],
+      };
+    case FINISH_WORKOUT:
+      return {
+        ...state,
+        currentComponent: 'Finish',
+        workoutInProgress: false,
       };
     default:
       return state;

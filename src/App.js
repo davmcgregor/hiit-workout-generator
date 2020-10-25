@@ -1,7 +1,12 @@
 import React, { Fragment } from 'react';
 import './App.css';
 
-import { Landing, StartingCountdown, CurrentWorkout } from './components';
+import {
+  Landing,
+  StartingCountdown,
+  CurrentWorkout,
+  WorkoutComplete,
+} from './components';
 
 // Redux
 import { Provider } from 'react-redux';
@@ -14,6 +19,7 @@ const App = () => {
         <Landing />
         <StartingCountdown />
         <CurrentWorkout />
+        <WorkoutComplete />
       </Fragment>
     </Provider>
   );

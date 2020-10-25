@@ -1,11 +1,16 @@
 import React, { Fragment, useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { changeExercise, changeRound } from '../../actions/workout';
+import {
+  changeExercise,
+  changeRound,
+  finishWorkout,
+} from '../../actions/workout';
 
 const CurrentWorkout = ({
   changeExercise,
   changeRound,
+  finishWorkout,
   workout: {
     rounds,
     fullWorkout,
@@ -20,15 +25,32 @@ const CurrentWorkout = ({
 
   // change logic
   useEffect(() => {
+    const changeAction = () => {
+      if (
+        (currentRoundIndex === rounds -1) &
+        (currentExerciseIndex === fullWorkout.length - 1)
+      ) {
+        finishWorkout();
+      } else {
+        currentExerciseIndex === fullWorkout.length - 1
+          ? changeRound()
+          : changeExercise();
+      }
+    };
+
     const exerciseChanger =
       workoutInProgress &&
       setInterval(() => {
-        (currentExerciseIndex === fullWorkout.length - 1)
-          ? changeRound()
-          : changeExercise();
+        changeAction();
       }, interval * 1000);
     return () => clearInterval(exerciseChanger);
-  }, [currentComponent, changeExercise, changeRound, interval]);
+  }, [
+    currentComponent,
+    changeExercise,
+    changeRound,
+    interval,
+    currentExerciseIndex,
+  ]);
 
   // set counter
   useEffect(() => {
@@ -63,12 +85,15 @@ CurrentWorkout.propTypes = {
   workout: PropTypes.object.isRequired,
   changeExercise: PropTypes.func.isRequired,
   changeRound: PropTypes.func.isRequired,
+  finishWorkout: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   workout: state.workout,
 });
 
-export default connect(mapStateToProps, { changeExercise, changeRound })(
-  CurrentWorkout
-);
+export default connect(mapStateToProps, {
+  changeExercise,
+  changeRound,
+  finishWorkout,
+})(CurrentWorkout);

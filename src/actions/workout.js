@@ -4,6 +4,7 @@ import {
   END_COUNTDOWN,
   CHANGE_EXERCISE,
   CHANGE_ROUND,
+  FINISH_WORKOUT
 } from './types';
 import generateWorkout from '../utils/generateWorkout';
 
@@ -33,5 +34,11 @@ export const changeExercise = () => (dispatch) => {
 export const changeRound = () => (dispatch) => {
   dispatch({
     type: CHANGE_ROUND,
+  });
+};
+
+export const finishWorkout = () => (dispatch) => {
+  dispatch({
+    type: FINISH_WORKOUT,
   });
 };
