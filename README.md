@@ -26,13 +26,36 @@ I want to be able to press a start to begin
 ```
 ```
 As a user,
+To know my progress within a segment,
+I want to constantly see a countdown for my workout/rest
+```
+```
+As a user,
+On completing a workout,
+I want to see a celebratory sceen
+```
+
+
+
+```
+As a user,
+To prepare for my exercises,
+I want to know which ones require a dumbell and which are bodyweight
+```
+```
+As a user,
+To finish a workout correctly,
+I don't need a rest on the final exercise
+```
+```
+As a user,
 To take a break,
-I want to be able to press pause during a workout
+I want to be able to press the spacebar to pause during a workout
 ```
 ```
 As a user,
 To have control over a session,
-I want to be able to press skip during a workout/break to jump forward 10 seconds (or to the next 3 second beeper countdown)
+I want to be able to press skip during a workout/break to jump forward 10 seconds (with the 10 symbol?) (or to the next 3 second beeper countdown)
 ```
 ```
 As a user,
@@ -41,13 +64,15 @@ I want to hear a 3 second beeper countdown
 ```
 ```
 As a user,
-To know my progress within a segment,
-I want to constantly see a countdown for my workout/rest
-```
-```
-As a user,
 To know my progress for the entire workout,
 I want to see a progress bar
+```
+
+### Extra
+```
+As a user,
+To engage better with the app,
+I want it to be styled nicely with green/orange start/wait colours
 ```
 ```
 As a user,
@@ -56,41 +81,9 @@ I want to see the progress bar to name all exercises in a round, and what round 
 ```
 ```
 As a user,
-To know when a segment is starting/finishing,
-I want to hear a beeper countdown
-```
-```
-As a user,
-To prepare for my exercises,
-I want to know which ones require a dumbell and which are bodyweight
-```
-```
-As a user,
-To control the app during a workout,
-I want to be able to press spacebar to pause, and right to skip 10 seconds (with the 10 symbol?)
-```
-```
-As a user,
-To know when a segment is starting/finishing,
-I want to hear a beeper countdown
-```
-```
-As a user,
-On completing a workout,
-I want to see a celebratory sceen
-```
-```
-As a user,
-To engage better with the app,
-I want it to be styled nicely with green/orange start/wait colours
-```
-```
-As a user,
 To use the app on my phone,
 I want it to be responsive
 ```
-
-### Extra
 ```
 As a user,
 To keep up motivation,
