@@ -38,6 +38,10 @@ const CurrentWorkout = ({
       }
     };
 
+    if (currentRoundIndex > rounds - 1) {
+      finishWorkout();
+    }
+
     const exerciseChanger =
       workoutInProgress &&
       setInterval(() => {
@@ -50,6 +54,7 @@ const CurrentWorkout = ({
     changeRound,
     interval,
     currentExerciseIndex,
+    currentRoundIndex,
   ]);
 
   // set counter
@@ -74,7 +79,25 @@ const CurrentWorkout = ({
         <h1>
           {name} {category === 'Rest' ? null : bodyweight && '(Bodyweight)'}
         </h1>
-        <button onClick={() => changeExercise()}>Increment Exercise</button>
+        {(category === 'Rest') &
+        (currentExerciseIndex + 1 < fullWorkout.length) ? (
+          <h3>Up Next: {fullWorkout[currentExerciseIndex + 1]['name']}</h3>
+        ) : null}
+
+        {(category === 'Rest') &
+        (currentExerciseIndex === fullWorkout.length - 1) ? (
+          <h3>Up Next: {fullWorkout[0]['name']}</h3>
+        ) : null}
+
+        <button
+          onClick={() => {
+            currentExerciseIndex === fullWorkout.length - 1
+              ? changeRound()
+              : changeExercise();
+          }}
+        >
+          Increment Exercise
+        </button>
         <button onClick={() => changeRound()}>Increment Round</button>
       </Fragment>
     )

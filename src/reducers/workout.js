@@ -50,8 +50,15 @@ export default function (state = initialState, action) {
     case CHANGE_EXERCISE:
       return {
         ...state,
-        currentExerciseIndex: state.currentExerciseIndex + 1,
-        currentExercise: state.fullWorkout[state.currentExerciseIndex + 1],
+        currentExerciseIndex:
+          state.currentExerciseIndex === state.fullWorkout.length - 1
+            ? 0
+            : state.currentExerciseIndex + 1,
+
+        currentExercise:
+          state.currentExerciseIndex === state.fullWorkout.length - 1
+            ? state.fullWorkout[0]
+            : state.fullWorkout[state.currentExerciseIndex + 1],
       };
     case CHANGE_ROUND:
       return {
@@ -64,6 +71,7 @@ export default function (state = initialState, action) {
       return {
         ...state,
         currentComponent: 'Finish',
+        currentRoundIndex: 0,
         workoutInProgress: false,
       };
     default:
