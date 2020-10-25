@@ -21,56 +21,52 @@ const CurrentWorkout = ({
     workoutInProgress,
   },
 }) => {
-  const [counter, setCounter] = useState(0);
-
-  // change logic
-  useEffect(() => {
-    const changeAction = () => {
-      if (
-        (currentRoundIndex === rounds - 1) &
-        (currentExerciseIndex === fullWorkout.length - 1)
-      ) {
-        finishWorkout();
-      } else {
-        currentExerciseIndex === fullWorkout.length - 1
-          ? changeRound()
-          : changeExercise();
-      }
-    };
-
-    if (currentRoundIndex > rounds - 1) {
+  const [counter, setCounter] = useState(null);
+  
+  const changeAction = () => {
+    if (
+      (currentRoundIndex === rounds - 1) &
+      (currentExerciseIndex === fullWorkout.length - 1)
+    ) {
       finishWorkout();
+    } else {
+      currentExerciseIndex === fullWorkout.length - 1
+        ? changeRound()
+        : changeExercise();
     }
+  };
 
-    const exerciseChanger =
-      workoutInProgress &&
-      setInterval(() => {
-        changeAction();
-      }, interval * 1000);
-    return () => clearInterval(exerciseChanger);
-  }, [
-    currentComponent,
-    changeExercise,
-    changeRound,
-    interval,
-    currentExerciseIndex,
-    currentRoundIndex,
-  ]);
+  // change action
+  useEffect(() => {
+    if (workoutInProgress & (currentRoundIndex > rounds - 1)) {
+      finishWorkout();
+      setCounter(null);
+    }
+    
+    if (workoutInProgress & (counter === 0)) {
+      changeAction();
+    }
+  }, [workoutInProgress, currentRoundIndex, counter]);
 
   // set counter
   useEffect(() => {
-    setCounter(interval);
+    workoutInProgress && setCounter(interval);
   }, [workoutInProgress, interval]);
 
   // change counter
   useEffect(() => {
     const timer =
       counter > 0 && setInterval(() => setCounter(counter - 1), 1000);
-    return () => clearInterval(timer);
-  }, [workoutInProgress, currentExerciseIndex, counter]);
+    return () => {
+      clearInterval(timer);
+    };
+  }, [workoutInProgress, counter]);
 
+  console.log(counter)
   return (
+    
     currentComponent === 'CurrentWorkout' && (
+      
       <Fragment>
         <h2>Counter: {counter}</h2>
         <h3>

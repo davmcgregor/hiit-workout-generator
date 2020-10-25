@@ -71,7 +71,6 @@ export default function (state = initialState, action) {
       return {
         ...state,
         currentComponent: 'Finish',
-        currentRoundIndex: 0,
         workoutInProgress: false,
       };
     default:
