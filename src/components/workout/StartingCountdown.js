@@ -16,11 +16,13 @@ const StartingCountdown = ({ workout: { currentComponent } }) => {
   }, [currentComponent, counter]);
 
   return (
-    currentComponent === 'StartingCountdown' && <Fragment>Begin in: {counter}</Fragment>
+    currentComponent === 'StartingCountdown' && (
+      <Fragment>Begin in: {counter}</Fragment>
+    )
   );
 };
 
-StartingCountdown.PropTypes = {
+StartingCountdown.propTypes = {
   workout: PropTypes.object.isRequired,
 };
 

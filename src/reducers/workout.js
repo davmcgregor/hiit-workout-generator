@@ -46,13 +46,15 @@ export default function (state = initialState, action) {
     case CHANGE_EXERCISE:
       return {
         ...state,
-        currentExercise: state.fullWorkout[state.currentExerciseIndex + 1],
         currentExerciseIndex: state.currentExerciseIndex + 1,
+        currentExercise: state.fullWorkout[state.currentExerciseIndex + 1],
       };
     case CHANGE_ROUND:
       return {
         ...state,
         currentRoundIndex: state.currentRoundIndex + 1,
+        currentExerciseIndex: 0,
+        currentExercise: state.fullWorkout[0],
       };
     default:
       return state;

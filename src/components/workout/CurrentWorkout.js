@@ -8,6 +8,7 @@ const CurrentWorkout = ({
   changeRound,
   workout: {
     rounds,
+    fullWorkout,
     currentComponent,
     currentExercise: { name, interval },
     currentExerciseIndex,
@@ -20,21 +21,26 @@ const CurrentWorkout = ({
   // change logic
   useEffect(() => {
     const exerciseChanger =
-      workoutInProgress && setInterval(() => changeExercise(), interval * 1000);
+      workoutInProgress &&
+      setInterval(() => {
+        (currentExerciseIndex === fullWorkout.length - 1)
+          ? changeRound()
+          : changeExercise();
+      }, interval * 1000);
     return () => clearInterval(exerciseChanger);
-  }, [currentComponent, changeExercise, interval]);
+  }, [currentComponent, changeExercise, changeRound, interval]);
 
   // set counter
   useEffect(() => {
     setCounter(interval);
   }, [workoutInProgress, interval]);
 
-  // counter
+  // change counter
   useEffect(() => {
     const timer =
       counter > 0 && setInterval(() => setCounter(counter - 1), 1000);
     return () => clearInterval(timer);
-  }, [currentExerciseIndex, counter]);
+  }, [workoutInProgress, currentExerciseIndex, counter]);
 
   return (
     currentComponent === 'CurrentWorkout' && (
