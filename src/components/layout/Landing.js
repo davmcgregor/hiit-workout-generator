@@ -23,20 +23,18 @@ const Landing = ({
   ));
 
   return (
-    currentComponent === 'Landing' && (
-      <Fragment>
-        <h1>
-          {rounds} Rounds of {exercises.length} Exercises ={' '}
-          {rounds * exercises.length} Minutes
-        </h1>
-        <h2>
-          Difficulty Level: {level} - {on} Second On // {off} Seconds Off
-        </h2>
-        <button onClick={() => getWorkout()}>Random</button>
-        <button onClick={() => startCountdown()}>Begin</button>
-        <ol>{workoutList}</ol>
-      </Fragment>
-    )
+    <Fragment>
+      <h1>
+        {rounds} Rounds of {exercises.length} Exercises ={' '}
+        {rounds * exercises.length} Minutes
+      </h1>
+      <h2>
+        Difficulty Level: {level} - {on} Second On // {off} Seconds Off
+      </h2>
+      <button onClick={() => getWorkout()}>Random</button>
+      <button onClick={() => startCountdown()}>Begin</button>
+      <ol>{workoutList}</ol>
+    </Fragment>
   );
 };
 

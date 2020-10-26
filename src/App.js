@@ -1,25 +1,17 @@
 import React, { Fragment } from 'react';
 import './App.css';
 
-import {
-  Landing,
-  StartingCountdown,
-  CurrentWorkout,
-  WorkoutComplete,
-} from './components';
-
 // Redux
 import { Provider } from 'react-redux';
 import store from './store';
+
+import { Routes } from './components';
 
 const App = () => {
   return (
     <Provider store={store}>
       <Fragment>
-        <Landing />
-        <StartingCountdown />
-        <CurrentWorkout />
-        <WorkoutComplete />
+        <Routes />
       </Fragment>
     </Provider>
   );

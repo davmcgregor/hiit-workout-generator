@@ -9,13 +9,11 @@ const WorkoutComplete = ({
   workout: { currentComponent },
 }) => {
   return (
-    currentComponent === 'Finish' && (
-      <Fragment>
-        <h1>Fin</h1>
-        <button onClick={() => startCountdown()}>Do this workout again?</button>
-        <button onClick={() => getWorkout()}>Try a new workout</button>
-      </Fragment>
-    )
+    <Fragment>
+      <h1>Fin</h1>
+      <button onClick={() => startCountdown()}>Do this workout again?</button>
+      <button onClick={() => getWorkout()}>Try a new workout</button>
+    </Fragment>
   );
 };
 

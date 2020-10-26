@@ -67,37 +67,35 @@ const CurrentWorkout = ({
   console.log(counter);
 
   return (
-    currentComponent === 'CurrentWorkout' && (
-      <Fragment>
-        <h2>Counter: {counter}</h2>
-        <h3>
-          Round {currentRoundIndex + 1} of {rounds}
-        </h3>
-        <h1>
-          {name} {category === 'Rest' ? null : bodyweight && '(Bodyweight)'}
-        </h1>
-        {(category === 'Rest') &
-        (currentExerciseIndex + 1 < fullWorkout.length) ? (
-          <h3>Up Next: {fullWorkout[currentExerciseIndex + 1]['name']}</h3>
-        ) : null}
+    <Fragment>
+      <h2>Counter: {counter}</h2>
+      <h3>
+        Round {currentRoundIndex + 1} of {rounds}
+      </h3>
+      <h1>
+        {name} {category === 'Rest' ? null : bodyweight && '(Bodyweight)'}
+      </h1>
+      {(category === 'Rest') &
+      (currentExerciseIndex + 1 < fullWorkout.length) ? (
+        <h3>Up Next: {fullWorkout[currentExerciseIndex + 1]['name']}</h3>
+      ) : null}
 
-        {(category === 'Rest') &
-        (currentExerciseIndex === fullWorkout.length - 1) ? (
-          <h3>Up Next: {fullWorkout[0]['name']}</h3>
-        ) : null}
+      {(category === 'Rest') &
+      (currentExerciseIndex === fullWorkout.length - 1) ? (
+        <h3>Up Next: {fullWorkout[0]['name']}</h3>
+      ) : null}
 
-        <button
-          onClick={() => {
-            currentExerciseIndex === fullWorkout.length - 1
-              ? changeRound()
-              : changeExercise();
-          }}
-        >
-          Increment Exercise
-        </button>
-        <button onClick={() => changeRound()}>Increment Round</button>
-      </Fragment>
-    )
+      <button
+        onClick={() => {
+          currentExerciseIndex === fullWorkout.length - 1
+            ? changeRound()
+            : changeExercise();
+        }}
+      >
+        Increment Exercise
+      </button>
+      <button onClick={() => changeRound()}>Increment Round</button>
+    </Fragment>
   );
 };
 

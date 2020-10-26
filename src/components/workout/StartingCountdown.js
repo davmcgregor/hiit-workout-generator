@@ -15,11 +15,7 @@ const StartingCountdown = ({ workout: { currentComponent } }) => {
     return () => clearInterval(timer);
   }, [currentComponent, counter]);
 
-  return (
-    currentComponent === 'StartingCountdown' && (
-      <Fragment>Begin in: {counter}</Fragment>
-    )
-  );
+  return <Fragment>Begin in: {counter}</Fragment>;
 };
 
 StartingCountdown.propTypes = {
