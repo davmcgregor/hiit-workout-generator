@@ -22,29 +22,28 @@ const CurrentWorkout = ({
   },
 }) => {
   const [counter, setCounter] = useState(null);
-  
-  const changeAction = () => {
-    if (
-      (currentRoundIndex === rounds - 1) &
-      (currentExerciseIndex === fullWorkout.length - 1)
-    ) {
-      finishWorkout();
-    } else {
-      currentExerciseIndex === fullWorkout.length - 1
-        ? changeRound()
-        : changeExercise();
-    }
-  };
 
   // change action
   useEffect(() => {
-    if (workoutInProgress & (currentRoundIndex > rounds - 1)) {
-      finishWorkout();
-      setCounter(null);
-    }
-    
-    if (workoutInProgress & (counter === 0)) {
-      changeAction();
+    if (workoutInProgress) {
+      if (counter === 0) {
+        currentExerciseIndex === fullWorkout.length - 1
+          ? changeRound()
+          : changeExercise();
+      }
+
+      if (currentRoundIndex > rounds - 1) {
+        finishWorkout();
+        setCounter(null);
+      }
+
+      if (
+        (currentRoundIndex === rounds - 1) &
+        (currentExerciseIndex === fullWorkout.length - 1)
+      ) {
+        finishWorkout();
+        setCounter(null);
+      }
     }
   }, [workoutInProgress, currentRoundIndex, counter]);
 
@@ -56,17 +55,19 @@ const CurrentWorkout = ({
   // change counter
   useEffect(() => {
     const timer =
-      counter > 0 && setInterval(() => setCounter(counter - 1), 1000);
+      counter > 0 &&
+      setInterval(() => {
+        setCounter(counter - 1);
+      }, 1000);
     return () => {
       clearInterval(timer);
     };
   }, [workoutInProgress, counter]);
 
-  console.log(counter)
+  console.log(counter);
+
   return (
-    
     currentComponent === 'CurrentWorkout' && (
-      
       <Fragment>
         <h2>Counter: {counter}</h2>
         <h3>
