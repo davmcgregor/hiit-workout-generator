@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from 'react';
+import React, { Fragment, useEffect, useState, useRef } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { changeExercise, finishWorkout } from '../../actions/workout';
@@ -15,28 +15,37 @@ const CurrentWorkout = ({
     lastExerciseOfWorkout,
   },
 }) => {
-  const [counter, setCounter] = useState(null);
+  const [counter, setCounter] = useState(interval);
+  const savedCallback = useRef();
 
-  // set counter
+  const callback = () => {
+    setCounter(counter - 1);
+  };
+
+  useEffect(() => {
+    savedCallback.current = callback;
+  });
+
+  useEffect(() => {
+    setCounter(interval);
+
+    const tick = () => {
+      savedCallback.current();
+    };
+
+    let id = setInterval(tick, 1000);
+    return () => clearInterval(id);
+  }, []);
+
   useEffect(() => {
     setCounter(interval);
   }, [interval]);
 
   // change counter
   useEffect(() => {
-    const timer =
-      counter > 0 && setInterval(() => setCounter(counter - 1), 1000);
-
     if (counter === 0) {
       lastExerciseOfWorkout ? finishWorkout() : changeExercise();
-      return () => {
-        clearInterval(timer);
-      };
     }
-
-    return () => {
-      clearInterval(timer);
-    };
   }, [counter]);
 
   console.log(counter);
