@@ -16,32 +16,28 @@ const CurrentWorkout = ({
   },
 }) => {
   const [counter, setCounter] = useState(null);
-  const [startCountdown, setStartCountdown] = useState(false);
 
   // set counter
   useEffect(() => {
     setCounter(interval);
-    setStartCountdown(true);
   }, [interval]);
 
   // change counter
   useEffect(() => {
-    if (startCountdown) {
-      const timer =
-        counter > 0 && setInterval(() => setCounter(counter - 1), 1000);
+    const timer =
+      counter > 0 && setInterval(() => setCounter(counter - 1), 1000);
 
-      if (counter === 0) {
-        lastExerciseOfWorkout ? finishWorkout() : changeExercise();
-        return () => {
-          clearInterval(timer);
-        };
-      }
-
+    if (counter === 0) {
+      lastExerciseOfWorkout ? finishWorkout() : changeExercise();
       return () => {
         clearInterval(timer);
       };
     }
-  }, [counter, startCountdown]);
+
+    return () => {
+      clearInterval(timer);
+    };
+  }, [counter]);
 
   console.log(counter);
 
