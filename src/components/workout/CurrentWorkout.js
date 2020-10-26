@@ -14,55 +14,60 @@ const CurrentWorkout = ({
   workout: {
     rounds,
     fullWorkout,
-    currentComponent,
     currentExercise: { name, interval, category, bodyweight },
     currentExerciseIndex,
     currentRoundIndex,
-    workoutInProgress,
   },
 }) => {
   const [counter, setCounter] = useState(null);
+  const [startCountdown, setStartCountdown] = useState(false);
 
   // change action
-  useEffect(() => {
-    if (workoutInProgress) {
-      if (counter === 0) {
-        currentExerciseIndex === fullWorkout.length - 1
-          ? changeRound()
-          : changeExercise();
-      }
-
-      if (currentRoundIndex > rounds - 1) {
-        finishWorkout();
-        setCounter(null);
-      }
-
-      if (
-        (currentRoundIndex === rounds - 1) &
-        (currentExerciseIndex === fullWorkout.length - 1)
-      ) {
-        finishWorkout();
-        setCounter(null);
-      }
+  const changeAction = () => {
+    if (currentRoundIndex > rounds - 1) {
+      finishWorkout();
+      setCounter(null);
     }
-  }, [workoutInProgress, currentRoundIndex, counter]);
+
+    if (
+      (currentRoundIndex === rounds - 1) &
+      (currentExerciseIndex === fullWorkout.length - 1)
+    ) {
+      finishWorkout();
+      setCounter(null);
+    }
+
+    currentExerciseIndex === fullWorkout.length - 1
+      ? changeRound()
+      : changeExercise();
+  };
 
   // set counter
   useEffect(() => {
-    workoutInProgress && setCounter(interval);
-  }, [workoutInProgress, interval]);
+    setCounter(interval);
+    setStartCountdown(true);
+  }, [interval]);
 
   // change counter
   useEffect(() => {
-    const timer =
-      counter > 0 &&
-      setInterval(() => {
-        setCounter(counter - 1);
-      }, 1000);
-    return () => {
-      clearInterval(timer);
-    };
-  }, [workoutInProgress, counter]);
+    if (startCountdown) {
+      const timer =
+        counter > 0 && setInterval(() => setCounter(counter - 1), 1000);
+
+      if (counter === 0) {
+        setStartCountdown(false)
+        changeAction();
+        console.log('hi');
+        return () => {
+          clearInterval(timer);
+        };
+      }
+
+      return () => {
+        clearInterval(timer);
+      };
+    }
+  }, [counter, startCountdown]);
 
   console.log(counter);
 

@@ -16,7 +16,6 @@ const initialState = {
   currentExercise: {},
   currentExerciseIndex: 0,
   currentRoundIndex: 0,
-  workoutInProgress: false,
 };
 
 export default function (state = initialState, action) {
@@ -45,7 +44,6 @@ export default function (state = initialState, action) {
       return {
         ...state,
         currentComponent: 'CurrentWorkout',
-        workoutInProgress: true,
       };
     case CHANGE_EXERCISE:
       return {
@@ -71,7 +69,6 @@ export default function (state = initialState, action) {
       return {
         ...state,
         currentComponent: 'Finish',
-        workoutInProgress: false,
       };
     default:
       return state;
