@@ -1,15 +1,10 @@
 import React, { Fragment, useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import {
-  changeExercise,
-  changeRound,
-  finishWorkout,
-} from '../../actions/workout';
+import { changeExercise, finishWorkout } from '../../actions/workout';
 
 const CurrentWorkout = ({
   changeExercise,
-  changeRound,
   finishWorkout,
   workout: {
     rounds,
@@ -17,30 +12,11 @@ const CurrentWorkout = ({
     currentExercise: { name, interval, category, bodyweight },
     currentExerciseIndex,
     currentRoundIndex,
+    lastExerciseOfWorkout,
   },
 }) => {
   const [counter, setCounter] = useState(null);
   const [startCountdown, setStartCountdown] = useState(false);
-
-  // change action
-  const changeAction = () => {
-    if (currentRoundIndex > rounds - 1) {
-      finishWorkout();
-      setCounter(null);
-    }
-
-    if (
-      (currentRoundIndex === rounds - 1) &
-      (currentExerciseIndex === fullWorkout.length - 1)
-    ) {
-      finishWorkout();
-      setCounter(null);
-    }
-
-    currentExerciseIndex === fullWorkout.length - 1
-      ? changeRound()
-      : changeExercise();
-  };
 
   // set counter
   useEffect(() => {
@@ -55,9 +31,7 @@ const CurrentWorkout = ({
         counter > 0 && setInterval(() => setCounter(counter - 1), 1000);
 
       if (counter === 0) {
-        setStartCountdown(false)
-        changeAction();
-        console.log('hi');
+        lastExerciseOfWorkout ? finishWorkout() : changeExercise();
         return () => {
           clearInterval(timer);
         };
@@ -77,6 +51,13 @@ const CurrentWorkout = ({
       <h3>
         Round {currentRoundIndex + 1} of {rounds}
       </h3>
+      <button
+        onClick={() => {
+          lastExerciseOfWorkout ? finishWorkout() : changeExercise();
+        }}
+      >
+        Next Exercise
+      </button>
       <h1>
         {name} {category === 'Rest' ? null : bodyweight && '(Bodyweight)'}
       </h1>
@@ -89,17 +70,6 @@ const CurrentWorkout = ({
       (currentExerciseIndex === fullWorkout.length - 1) ? (
         <h3>Up Next: {fullWorkout[0]['name']}</h3>
       ) : null}
-
-      <button
-        onClick={() => {
-          currentExerciseIndex === fullWorkout.length - 1
-            ? changeRound()
-            : changeExercise();
-        }}
-      >
-        Increment Exercise
-      </button>
-      <button onClick={() => changeRound()}>Increment Round</button>
     </Fragment>
   );
 };
@@ -107,7 +77,6 @@ const CurrentWorkout = ({
 CurrentWorkout.propTypes = {
   workout: PropTypes.object.isRequired,
   changeExercise: PropTypes.func.isRequired,
-  changeRound: PropTypes.func.isRequired,
   finishWorkout: PropTypes.func.isRequired,
 };
 
@@ -117,6 +86,5 @@ const mapStateToProps = (state) => ({
 
 export default connect(mapStateToProps, {
   changeExercise,
-  changeRound,
   finishWorkout,
 })(CurrentWorkout);

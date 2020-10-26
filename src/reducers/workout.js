@@ -3,7 +3,6 @@ import {
   START_COUNTDOWN,
   END_COUNTDOWN,
   CHANGE_EXERCISE,
-  CHANGE_ROUND,
   FINISH_WORKOUT,
 } from '../actions/types';
 
@@ -16,6 +15,8 @@ const initialState = {
   currentExercise: {},
   currentExerciseIndex: 0,
   currentRoundIndex: 0,
+  lastExerciseOfRound: false,
+  lastExerciseOfWorkout: false,
 };
 
 export default function (state = initialState, action) {
@@ -52,23 +53,37 @@ export default function (state = initialState, action) {
           state.currentExerciseIndex === state.fullWorkout.length - 1
             ? 0
             : state.currentExerciseIndex + 1,
-
         currentExercise:
           state.currentExerciseIndex === state.fullWorkout.length - 1
             ? state.fullWorkout[0]
             : state.fullWorkout[state.currentExerciseIndex + 1],
-      };
-    case CHANGE_ROUND:
-      return {
-        ...state,
-        currentRoundIndex: state.currentRoundIndex + 1,
-        currentExerciseIndex: 0,
-        currentExercise: state.fullWorkout[0],
+        currentRoundIndex:
+          state.currentExerciseIndex === state.fullWorkout.length - 1
+            ? state.currentRoundIndex + 1
+            : state.currentRoundIndex,
+        lastExerciseOfWorkout:
+          state.currentRoundIndex > state.rounds - 1 ||
+          (state.currentRoundIndex === state.rounds - 1) &
+            (state.currentExerciseIndex === state.fullWorkout.length - 3)
+            ? true
+            : false,
       };
     case FINISH_WORKOUT:
       return {
         ...state,
         currentComponent: 'Finish',
+        currentExerciseIndex: 0,
+        currentRoundIndex: 0,
+        lastExerciseOfRound:
+          state.currentExerciseIndex === state.fullWorkout.length - 1
+            ? true
+            : false,
+        lastExerciseOfWorkout:
+          state.currentRoundIndex > state.rounds - 1 ||
+          (state.currentRoundIndex === state.rounds - 1) &
+            (state.currentExerciseIndex === state.fullWorkout.length - 1)
+            ? true
+            : false,
       };
     default:
       return state;

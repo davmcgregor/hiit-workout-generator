@@ -3,7 +3,6 @@ import {
   START_COUNTDOWN,
   END_COUNTDOWN,
   CHANGE_EXERCISE,
-  CHANGE_ROUND,
   FINISH_WORKOUT
 } from './types';
 import generateWorkout from '../utils/generateWorkout';
@@ -28,12 +27,6 @@ export const startCountdown = (timeout = 4000) => (dispatch) => {
 export const changeExercise = () => (dispatch) => {
   dispatch({
     type: CHANGE_EXERCISE,
-  });
-};
-
-export const changeRound = () => (dispatch) => {
-  dispatch({
-    type: CHANGE_ROUND,
   });
 };
 
