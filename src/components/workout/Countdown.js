@@ -2,7 +2,7 @@ import React, { Fragment, useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-const StartingCountdown = ({ workout: { currentComponent } }) => {
+const Countdown = ({ workout: { currentComponent } }) => {
   const [counter, setCounter] = useState(10);
 
   useEffect(() => {
@@ -18,7 +18,7 @@ const StartingCountdown = ({ workout: { currentComponent } }) => {
   return <Fragment>Begin in: {counter}</Fragment>;
 };
 
-StartingCountdown.propTypes = {
+Countdown.propTypes = {
   workout: PropTypes.object.isRequired,
 };
 
@@ -26,4 +26,4 @@ const mapStateToProps = (state) => ({
   workout: state.workout,
 });
 
-export default connect(mapStateToProps)(StartingCountdown);
+export default connect(mapStateToProps)(Countdown);

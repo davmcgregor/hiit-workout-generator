@@ -2,20 +2,16 @@ import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import {
-  Landing,
-  StartingCountdown,
-  CurrentWorkout,
-  WorkoutComplete,
-} from '../index';
+import { Landing, Countdown } from '../index';
+// import { Landing, Countdown, Workout, Complete } from '../index';
 
 const Routes = ({ workout: { currentComponent } }) => {
   return (
     <Fragment>
       {currentComponent === 'Landing' && <Landing />}
-      {currentComponent === 'StartingCountdown' && <StartingCountdown />}
-      {currentComponent === 'CurrentWorkout' && <CurrentWorkout />}
-      {currentComponent === 'Finish' && <WorkoutComplete />}
+      {currentComponent === 'Countdown' && <Countdown />}
+      {/* {currentComponent === 'Workout' && <Workout />}
+      {currentComponent === 'Finish' && <Complete />} */}
     </Fragment>
   );
 };

@@ -1,22 +1,21 @@
 import {
   GET_WORKOUT,
-  START_COUNTDOWN,
-  END_COUNTDOWN,
-  CHANGE_EXERCISE,
-  FINISH_WORKOUT,
+  COUNTDOWN_STARTED,
+  COUNTDOWN_COMPLETED,
 } from '../actions/types';
 
 const initialState = {
-  exercises: [],
-  fullWorkout: [],
-  rounds: null,
-  difficulty: {},
   currentComponent: 'Landing',
-  currentExercise: {},
-  currentExerciseIndex: 0,
+  active: false,
+  seconds: 0,
+  totalRounds: 0,
   currentRoundIndex: 0,
-  lastExerciseOfRound: false,
-  lastExerciseOfWorkout: false,
+  resting: false,
+  paused: false,
+  completed: false,
+  currentExerciseIndex: 0,
+  exercises: [],
+  difficulty: {},
 };
 
 export default function (state = initialState, action) {
@@ -27,64 +26,62 @@ export default function (state = initialState, action) {
       return {
         ...state,
         exercises: payload.randomExercises,
-        fullWorkout: payload.fullWorkout,
-        rounds: payload.randomRounds,
+        totalRounds: payload.randomRounds,
         difficulty: payload.randomDifficulty,
         currentComponent: 'Landing',
-        currentExercise: payload.fullWorkout[state.currentExerciseIndex],
       };
-    case START_COUNTDOWN:
+    case COUNTDOWN_STARTED:
       return {
         ...state,
-        currentComponent: 'StartingCountdown',
+        currentComponent: 'Countdown',
         currentExercise: state.fullWorkout[0],
         currentExerciseIndex: 0,
         currentRoundIndex: 0,
       };
-    case END_COUNTDOWN:
+    case COUNTDOWN_COMPLETED:
       return {
         ...state,
         currentComponent: 'CurrentWorkout',
       };
-    case CHANGE_EXERCISE:
-      return {
-        ...state,
-        currentExerciseIndex:
-          state.currentExerciseIndex === state.fullWorkout.length - 1
-            ? 0
-            : state.currentExerciseIndex + 1,
-        currentExercise:
-          state.currentExerciseIndex === state.fullWorkout.length - 1
-            ? state.fullWorkout[0]
-            : state.fullWorkout[state.currentExerciseIndex + 1],
-        currentRoundIndex:
-          state.currentExerciseIndex === state.fullWorkout.length - 1
-            ? state.currentRoundIndex + 1
-            : state.currentRoundIndex,
-        lastExerciseOfWorkout:
-          state.currentRoundIndex > state.rounds - 1 ||
-          (state.currentRoundIndex === state.rounds - 1) &
-            (state.currentExerciseIndex === state.fullWorkout.length - 3)
-            ? true
-            : false,
-      };
-    case FINISH_WORKOUT:
-      return {
-        ...state,
-        currentComponent: 'Finish',
-        currentExerciseIndex: 0,
-        currentRoundIndex: 0,
-        lastExerciseOfRound:
-          state.currentExerciseIndex === state.fullWorkout.length - 1
-            ? true
-            : false,
-        lastExerciseOfWorkout:
-          state.currentRoundIndex > state.rounds - 1 ||
-          (state.currentRoundIndex === state.rounds - 1) &
-            (state.currentExerciseIndex === state.fullWorkout.length - 1)
-            ? true
-            : false,
-      };
+    // case CHANGE_EXERCISE:
+    //   return {
+    //     ...state,
+    //     currentExerciseIndex:
+    //       state.currentExerciseIndex === state.fullWorkout.length - 1
+    //         ? 0
+    //         : state.currentExerciseIndex + 1,
+    //     currentExercise:
+    //       state.currentExerciseIndex === state.fullWorkout.length - 1
+    //         ? state.fullWorkout[0]
+    //         : state.fullWorkout[state.currentExerciseIndex + 1],
+    //     currentRoundIndex:
+    //       state.currentExerciseIndex === state.fullWorkout.length - 1
+    //         ? state.currentRoundIndex + 1
+    //         : state.currentRoundIndex,
+    //     lastExerciseOfWorkout:
+    //       state.currentRoundIndex > state.rounds - 1 ||
+    //       (state.currentRoundIndex === state.rounds - 1) &
+    //         (state.currentExerciseIndex === state.fullWorkout.length - 3)
+    //         ? true
+    //         : false,
+    //   };
+    // case FINISH_WORKOUT:
+    //   return {
+    //     ...state,
+    //     currentComponent: 'Finish',
+    //     currentExerciseIndex: 0,
+    //     currentRoundIndex: 0,
+    //     lastExerciseOfRound:
+    //       state.currentExerciseIndex === state.fullWorkout.length - 1
+    //         ? true
+    //         : false,
+    //     lastExerciseOfWorkout:
+    //       state.currentRoundIndex > state.rounds - 1 ||
+    //       (state.currentRoundIndex === state.rounds - 1) &
+    //         (state.currentExerciseIndex === state.fullWorkout.length - 1)
+    //         ? true
+    //         : false,
+    //   };
     default:
       return state;
   }

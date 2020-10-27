@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { getWorkout, startCountdown } from '../../actions/workout';
 
-const WorkoutComplete = ({
+const Complete = ({
   getWorkout,
   startCountdown,
   workout: { currentComponent },
@@ -17,7 +17,7 @@ const WorkoutComplete = ({
   );
 };
 
-WorkoutComplete.propTypes = {
+Complete.propTypes = {
   startCountdown: PropTypes.func.isRequired,
   getWorkout: PropTypes.func.isRequired,
   workout: PropTypes.object.isRequired,
@@ -28,5 +28,5 @@ const mapStateToProps = (state) => ({
 });
 
 export default connect(mapStateToProps, { startCountdown, getWorkout })(
-  WorkoutComplete
+  Complete
 );

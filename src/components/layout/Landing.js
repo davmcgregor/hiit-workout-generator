@@ -5,13 +5,12 @@ import { getWorkout, startCountdown } from '../../actions/workout';
 import PropTypes from 'prop-types';
 
 const Landing = ({
-  startCountdown,
   getWorkout,
   workout: {
     exercises,
-    rounds,
+    currentExerciseIndex,
+    totalRounds,
     difficulty: { level, on, off },
-    currentComponent,
   },
 }) => {
   useEffect(() => {
@@ -25,8 +24,8 @@ const Landing = ({
   return (
     <Fragment>
       <h1>
-        {rounds} Rounds of {exercises.length} Exercises ={' '}
-        {rounds * exercises.length} Minutes
+        {totalRounds} Rounds of {exercises.length} Exercises ={' '}
+        {totalRounds * exercises.length} Minutes
       </h1>
       <h2>
         Difficulty Level: {level} - {on} Second On // {off} Seconds Off
