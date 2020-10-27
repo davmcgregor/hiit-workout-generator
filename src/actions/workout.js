@@ -18,51 +18,60 @@ let timer = null;
 
 export const getWorkout = () => (dispatch) => {
   const randomWorkout = generateWorkout();
-
   dispatch({
     type: GET_WORKOUT,
     payload: randomWorkout,
   });
 };
 
-///
-
-export const startCountdown = () => (dispatch) => {
+export const startTimer = ({ seconds }) => (dispatch) => {
   clearInterval(timer);
+
   timer = setInterval(() => {
     dispatch(tick());
   }, 1000);
-  dispatch(timerStarted({ seconds }));
 
   dispatch({
-    type: COUNTDOWN_STARTED,
-    payload: 4,
+    type: TIMER_STARTED,
+    payload: { seconds },
   });
 };
 
-//
+export const tick = () => (dispatch, getState) => {
+  const { workout } = getState();
 
-export const tick = () => (dispatch) => {
-  return (dispatch, getState) => {
-    const { timer } = getState();
+  if (workout.paused || (!workout.active && !workout.countdown)) {
+    return;
+  }
 
-    if (timer.paused || !timer.active) {
-      return;
-    }
+  if (workout.totalRounds === workout.currentRound) {
+    dispatch({
+      type: WORKOUT_COMPLETED,
+    });
+    clearInterval(timer);
 
-    if (setComplete(timer)) {
-      dispatch(completeSet());
-      return;
-    }
+    return;
+  }
 
-    if (!timerComplete(timer)) {
-      dispatch(timerTick());
+  if (workout.seconds !== 0) {
+    dispatch({
+      type: TIMER_TICK,
+    });
+  } else {
+    if (timer.resting) {
+      dispatch(startWork());
+    } else if (timer.working) {
+      dispatch(startRest());
     } else {
-      if (timer.resting) {
-        dispatch(startWork());
-      } else {
-        dispatch(startRest());
-      }
+      dispatch(startCountdown());
     }
-  };
+  }
+};
+
+export const startCountdown = () => (dispatch) => {
+  dispatch({
+    type: COUNTDOWN_STARTED,
+  });
+
+  dispatch(startTimer({ seconds: 4 }));
 };

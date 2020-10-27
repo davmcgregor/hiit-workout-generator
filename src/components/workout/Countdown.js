@@ -1,21 +1,9 @@
-import React, { Fragment, useEffect, useState } from 'react';
+import React, { Fragment, useEffect } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-const Countdown = ({ workout: { currentComponent } }) => {
-  const [counter, setCounter] = useState(10);
-
-  useEffect(() => {
-    setCounter(3);
-  }, [currentComponent]);
-
-  useEffect(() => {
-    const timer =
-      counter > 0 && setInterval(() => setCounter(counter - 1), 1000);
-    return () => clearInterval(timer);
-  }, [currentComponent, counter]);
-
-  return <Fragment>Begin in: {counter}</Fragment>;
+const Countdown = ({ workout: { seconds } }) => {
+  return <Fragment>Begin in: {seconds}</Fragment>;
 };
 
 Countdown.propTypes = {

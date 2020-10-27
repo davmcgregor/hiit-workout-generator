@@ -5,10 +5,10 @@ import { getWorkout, startCountdown } from '../../actions/workout';
 import PropTypes from 'prop-types';
 
 const Landing = ({
+  startCountdown,
   getWorkout,
   workout: {
-    exercises,
-    currentExerciseIndex,
+    exerciseList,
     totalRounds,
     difficulty: { level, on, off },
   },
@@ -17,22 +17,22 @@ const Landing = ({
     getWorkout();
   }, [getWorkout]);
 
-  const workoutList = exercises.map((exercise, index) => (
-    <li key={index}>{exercise.name}</li>
-  ));
-
   return (
     <Fragment>
       <h1>
-        {totalRounds} Rounds of {exercises.length} Exercises ={' '}
-        {totalRounds * exercises.length} Minutes
+        {totalRounds} Rounds of {exerciseList.length} Exercises ={' '}
+        {totalRounds * exerciseList.length} Minutes
       </h1>
       <h2>
         Difficulty Level: {level} - {on} Second On // {off} Seconds Off
       </h2>
-      <button onClick={() => getWorkout()}>Random</button>
       <button onClick={() => startCountdown()}>Begin</button>
-      <ol>{workoutList}</ol>
+      <button onClick={() => getWorkout()}>Random</button>
+      <ol>
+        {exerciseList.map((exercise, index) => (
+          <li key={index}>{exercise.name}</li>
+        ))}
+      </ol>
     </Fragment>
   );
 };
