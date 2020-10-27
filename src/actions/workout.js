@@ -8,8 +8,8 @@ import {
   TIMER_RESET,
   EXERCISE_STARTED,
   REST_STARTED,
-  SET_STARTED,
-  SET_COMPLETED,
+  WORKOUT_STARTED,
+  WORKOUT_COMPLETED,
 } from './types';
 
 import generateWorkout from '../utils/generateWorkout';
@@ -40,7 +40,7 @@ export const startTimer = ({ seconds }) => (dispatch) => {
 export const tick = () => (dispatch, getState) => {
   const { workout } = getState();
 
-  if (workout.paused || (!workout.active && !workout.countdown)) {
+  if (workout.paused || workout.complete) {
     return;
   }
 
@@ -58,10 +58,12 @@ export const tick = () => (dispatch, getState) => {
       type: TIMER_TICK,
     });
   } else {
-    if (timer.resting) {
-      dispatch(startWork());
-    } else if (timer.working) {
+    if (workout.resting) {
+      dispatch(startExercise());
+    } else if (workout.working) {
       dispatch(startRest());
+    } else if (workout.countdown) {
+      dispatch(startWorkout());
     } else {
       dispatch(startCountdown());
     }
@@ -73,5 +75,28 @@ export const startCountdown = () => (dispatch) => {
     type: COUNTDOWN_STARTED,
   });
 
-  dispatch(startTimer({ seconds: 4 }));
+  dispatch(startTimer({ seconds: 3 }));
+};
+
+export const startExercise = () => (dispatch, getState) => {
+  const { workout } = getState();
+  dispatch({
+    type: EXERCISE_STARTED,
+  });
+  dispatch(startTimer({ seconds: workout.difficulty.work }));
+};
+
+export const startRest = () => (dispatch, getState) => {
+  const { workout } = getState();
+  dispatch({
+    type: REST_STARTED,
+  });
+  dispatch(startTimer({ seconds: workout.difficulty.rest }));
+};
+
+export const startWorkout = () => (dispatch) => {
+  dispatch({
+    type: WORKOUT_STARTED,
+  });
+  dispatch(startExercise());
 };

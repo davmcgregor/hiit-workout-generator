@@ -1,7 +1,6 @@
 import {
   GET_WORKOUT,
   COUNTDOWN_STARTED,
-  COUNTDOWN_COMPLETED,
   TIMER_STARTED,
   TIMER_TICK,
   TIMER_PAUSED,
@@ -15,11 +14,11 @@ import {
 const initialState = {
   currentComponent: 'Landing',
   seconds: 0,
-  countdown: false,
   working: false,
   resting: false,
   paused: false,
   completed: false,
+  countdown: false,
   totalRounds: 0,
   currentRound: 0,
   currentExerciseIndex: 0,
@@ -47,14 +46,9 @@ export default function (state = initialState, action) {
         countdown: true,
       };
 
-    case COUNTDOWN_COMPLETED:
-      return {
-        ...state,
-        currentComponent: 'Workout',
-        countdown: false,
-      };
-
-    ///
+    ////////
+    ////////
+    ////////
 
     case TIMER_STARTED:
       return {
@@ -80,7 +74,6 @@ export default function (state = initialState, action) {
       return {
         ...state,
         resting: false,
-        round: state.round + 1,
       };
     case REST_STARTED:
       return {
@@ -90,14 +83,16 @@ export default function (state = initialState, action) {
     case WORKOUT_STARTED:
       return {
         ...state,
-        active: true,
+        currentComponent: 'Workout',
+        working: true,
+        countdown: false,
         completed: false,
-        round: 0,
+        currentRound: 1,
       };
     case WORKOUT_COMPLETED:
       return {
         ...state,
-        active: false,
+        working: false,
         resting: false,
         completed: true,
       };

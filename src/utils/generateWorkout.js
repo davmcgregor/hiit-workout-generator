@@ -6,7 +6,7 @@ const generateWorkout = () => {
     const randomRounds = 3;
     const randomExerciseCount = 3;
     const randomExercises = random(AllExercises).slice(0, randomExerciseCount);
-    const randomDifficulty = { level: 'Easy', on: 4, off: 2 };
+    const randomDifficulty = { level: 'Easy', work: 4, rest: 2 };
 
     return { randomRounds, randomExercises, randomDifficulty };
   } else {
@@ -14,9 +14,9 @@ const generateWorkout = () => {
     const randomExerciseCount = random([6, 7, 8, 9, 10, 11, 12])[0];
     const randomExercises = random(AllExercises).slice(0, randomExerciseCount);
     const randomDifficulty = random([
-      { level: 'Hard', on: 30, off: 30 },
-      { level: 'Harder', on: 35, off: 25 },
-      { level: 'Hardest', on: 40, off: 20 },
+      { level: 'Hard', work: 30, rest: 30 },
+      { level: 'Harder', work: 35, rest: 25 },
+      { level: 'Hardest', work: 40, rest: 20 },
     ])[0];
 
     return { randomRounds, randomExercises, randomDifficulty };
