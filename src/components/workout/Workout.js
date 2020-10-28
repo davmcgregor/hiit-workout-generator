@@ -11,7 +11,7 @@ const Workout = ({
     completed,
     totalRounds,
     currentRound,
-    currentExerciseIndex,
+    currentExercise,
     exerciseList,
     difficulty,
   },
@@ -24,13 +24,17 @@ const Workout = ({
       </h3>
 
       <h1>
+        {working && currentExercise}{' '}
         {working ? (
-          exerciseList[currentExerciseIndex]['name']
+          exerciseList[currentExercise - 1]['name']
         ) : (
           <span>Rest</span>
         )}
       </h1>
-      <h4>{resting && exerciseList[currentExerciseIndex]['name']}</h4>
+      <h4>
+        {resting &&
+          exerciseList[currentExercise === 3 ? 0 : currentExercise]['name']}
+      </h4>
       <button>Pause/Resume</button>
       <button>Skip</button>
     </Fragment>

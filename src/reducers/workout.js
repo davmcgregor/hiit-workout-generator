@@ -21,7 +21,7 @@ const initialState = {
   countdown: false,
   totalRounds: 0,
   currentRound: 0,
-  currentExerciseIndex: 0,
+  currentExercise: 0,
   exerciseList: [],
   difficulty: {},
 };
@@ -75,16 +75,20 @@ export default function (state = initialState, action) {
         ...state,
         resting: false,
         working: true,
+        currentExercise:
+          state.currentExercise === state.exerciseList.length
+            ? 1
+            : state.currentExercise + 1,
+        currentRound:
+          state.currentExercise === state.exerciseList.length
+            ? state.currentRound + 1
+            : state.currentRound,
       };
     case REST_STARTED:
       return {
         ...state,
         resting: true,
         working: false,
-        currentExerciseIndex:
-          state.currentExerciseIndex === state.exerciseList.length - 1
-            ? 0
-            : state.currentExerciseIndex + 1,
       };
     case WORKOUT_STARTED:
       return {
