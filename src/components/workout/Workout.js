@@ -22,10 +22,15 @@ const Workout = ({
       <h3>
         Round {currentRound} / {totalRounds}
       </h3>
-     
-      {exerciseList[0][name]}
-      <h1>{working ? exerciseList[currentExerciseIndex]["name"] : "Rest"}</h1>
-      <h3>{resting && exerciseList[currentExerciseIndex + 1]["name"]}</h3>
+
+      <h1>
+        {working ? (
+          exerciseList[currentExerciseIndex]['name']
+        ) : (
+          <span>Rest</span>
+        )}
+      </h1>
+      <h4>{resting && exerciseList[currentExerciseIndex]['name']}</h4>
       <button>Pause/Resume</button>
       <button>Skip</button>
     </Fragment>

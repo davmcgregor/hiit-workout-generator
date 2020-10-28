@@ -74,19 +74,23 @@ export default function (state = initialState, action) {
       return {
         ...state,
         resting: false,
+        working: true,
       };
     case REST_STARTED:
       return {
         ...state,
         resting: true,
+        working: false,
+        currentExerciseIndex:
+          state.currentExerciseIndex === state.exerciseList.length - 1
+            ? 0
+            : state.currentExerciseIndex + 1,
       };
     case WORKOUT_STARTED:
       return {
         ...state,
         currentComponent: 'Workout',
-        working: true,
         countdown: false,
-        completed: false,
         currentRound: 1,
       };
     case WORKOUT_COMPLETED:
