@@ -6,7 +6,7 @@ const generateWorkout = () => {
     const randomRounds = 3;
     const randomExerciseCount = 3;
     const randomExercises = random(AllExercises).slice(0, randomExerciseCount);
-    const randomDifficulty = { level: 'Easy', work: 4, rest: 2 };
+    const randomDifficulty = { level: 'Easy', work: 10, rest: 10 };
 
     return { randomRounds, randomExercises, randomDifficulty };
   } else {

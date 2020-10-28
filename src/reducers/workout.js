@@ -9,6 +9,9 @@ import {
   REST_STARTED,
   WORKOUT_STARTED,
   WORKOUT_COMPLETED,
+  TIMER_SKIP,
+  NEXT_EXERCISE,
+  NEXT_REST,
 } from '../actions/types';
 
 const initialState = {
@@ -37,19 +40,15 @@ export default function (state = initialState, action) {
         totalRounds: payload.randomRounds,
         difficulty: payload.randomDifficulty,
         exerciseList: payload.randomExercises,
+        completed: false,
       };
-
     case COUNTDOWN_STARTED:
       return {
         ...state,
         currentComponent: 'Countdown',
         countdown: true,
+        completed: false,
       };
-
-    ////////
-    ////////
-    ////////
-
     case TIMER_STARTED:
       return {
         ...state,
@@ -69,6 +68,11 @@ export default function (state = initialState, action) {
       return {
         ...state,
         paused: false,
+      };
+    case TIMER_SKIP:
+      return {
+        ...state,
+        seconds: 3,
       };
     case EXERCISE_STARTED:
       return {
@@ -100,9 +104,36 @@ export default function (state = initialState, action) {
     case WORKOUT_COMPLETED:
       return {
         ...state,
+        currentComponent: 'Finish',
+        paused: false,
         working: false,
         resting: false,
         completed: true,
+        seconds: 0,
+        currentRound: 0,
+        currentExercise: 0,
+      };
+    case NEXT_EXERCISE:
+      return {
+        ...state,
+        seconds: payload,
+        working: true,
+        resting: false,
+        currentExercise:
+          state.currentExercise === state.exerciseList.length
+            ? 1
+            : state.currentExercise + 1,
+        currentRound:
+          state.currentExercise === state.exerciseList.length
+            ? state.currentRound + 1
+            : state.currentRound,
+      };
+    case NEXT_REST:
+      return {
+        ...state,
+        seconds: payload,
+        working: false,
+        resting: true,
       };
     default:
       return state;

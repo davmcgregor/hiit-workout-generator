@@ -1,15 +1,17 @@
 import {
   GET_WORKOUT,
   COUNTDOWN_STARTED,
-  COUNTDOWN_COMPLETED,
   TIMER_STARTED,
   TIMER_TICK,
   TIMER_PAUSED,
-  TIMER_RESET,
+  TIMER_RESUMED,
+  TIMER_SKIP,
   EXERCISE_STARTED,
   REST_STARTED,
   WORKOUT_STARTED,
   WORKOUT_COMPLETED,
+  NEXT_EXERCISE,
+  NEXT_REST,
 } from './types';
 
 import generateWorkout from '../utils/generateWorkout';
@@ -44,15 +46,6 @@ export const tick = () => (dispatch, getState) => {
     return;
   }
 
-  if (workout.totalRounds === workout.currentRound) {
-    dispatch({
-      type: WORKOUT_COMPLETED,
-    });
-    clearInterval(timer);
-
-    return;
-  }
-
   if (workout.seconds !== 0) {
     dispatch({
       type: TIMER_TICK,
@@ -61,7 +54,20 @@ export const tick = () => (dispatch, getState) => {
     if (workout.resting) {
       dispatch(startExercise());
     } else if (workout.working) {
-      dispatch(startRest());
+      if (
+        (workout.totalRounds === workout.currentRound &&
+          workout.currentExercise === workout.exerciseList.length) ||
+        workout.currentRound > workout.totalRounds
+      ) {
+        dispatch({
+          type: WORKOUT_COMPLETED,
+        });
+        clearInterval(timer);
+
+        return;
+      } else {
+        dispatch(startRest());
+      }
     } else if (workout.countdown) {
       dispatch(startWorkout());
     } else {
@@ -99,4 +105,86 @@ export const startWorkout = () => (dispatch) => {
     type: WORKOUT_STARTED,
   });
   dispatch(startExercise());
+};
+
+export const skipTimer = () => (dispatch, getState) => {
+  const { workout } = getState();
+
+  if (workout.paused) {
+    if (workout.resting) {
+      dispatch({
+        type: NEXT_EXERCISE,
+        payload: workout.difficulty.work,
+      });
+    } else if (workout.working) {
+      dispatch({
+        type: NEXT_REST,
+        payload: workout.difficulty.rest,
+      });
+    }
+    if (
+      (workout.totalRounds === workout.currentRound &&
+        workout.currentExercise === workout.exerciseList.length) ||
+      workout.currentRound > workout.totalRounds
+    ) {
+      dispatch({
+        type: WORKOUT_COMPLETED,
+      });
+      clearInterval(timer);
+
+      return;
+    }
+  } else {
+    dispatch({
+      type: TIMER_SKIP,
+    });
+    clearInterval(timer);
+    if (workout.seconds > 3) {
+      dispatch(startTimer({ seconds: 3 }));
+    } else {
+      if (workout.resting) {
+        dispatch(startExercise());
+      } else if (workout.working) {
+        dispatch(startRest());
+      }
+
+      if (
+        (workout.totalRounds === workout.currentRound &&
+          workout.currentExercise === workout.exerciseList.length) ||
+        workout.currentRound > workout.totalRounds
+      ) {
+        dispatch({
+          type: WORKOUT_COMPLETED,
+        });
+        clearInterval(timer);
+
+        return;
+      }
+    }
+  }
+};
+
+export const pause = () => (dispatch) => {
+  dispatch({
+    type: TIMER_PAUSED,
+  });
+};
+
+export const resume = () => (dispatch) => {
+  dispatch({
+    type: TIMER_RESUMED,
+  });
+};
+
+export const togglePause = () => (dispatch, getState) => {
+  const { workout } = getState();
+  if (workout.paused) {
+    dispatch({
+      type: TIMER_RESUMED,
+    });
+  } else {
+    dispatch({
+      type: TIMER_PAUSED,
+    });
+  }
 };

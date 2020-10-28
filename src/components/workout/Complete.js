@@ -10,9 +10,9 @@ const Complete = ({
 }) => {
   return (
     <Fragment>
-      <h1>Fin</h1>
-      <button onClick={() => startCountdown()}>Do this workout again?</button>
+      <h1>Fin!</h1>
       <button onClick={() => getWorkout()}>Try a new workout</button>
+      <button onClick={() => startCountdown()}>Do this workout again?</button>
     </Fragment>
   );
 };

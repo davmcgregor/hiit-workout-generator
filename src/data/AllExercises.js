@@ -12,7 +12,7 @@ const AllExercises = [
   { category: 'Shoulders', name: 'Bent-over Reverse Fly', bodyweight: false },
   { category: 'Shoulders', name: 'Curl to Press', bodyweight: false },
 
-  { category: 'Upper Body', name: 'Pushup', bodyweight: true },
+  { category: 'Upper Body', name: 'Pushups', bodyweight: true },
   { category: 'Upper Body', name: 'Tricep Pushup', bodyweight: true },
   { category: 'Upper Body', name: 'Lying Flyes', bodyweight: false },
   { category: 'Upper Body', name: 'Renegade Rows', bodyweight: false },
@@ -51,4 +51,4 @@ const AllExercises = [
   { category: 'Core', name: 'Plank with Leg Raises', bodyweight: true },
 ];
 
-export default AllExercises
+export default AllExercises;
