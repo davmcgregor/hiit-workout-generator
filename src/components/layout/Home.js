@@ -10,7 +10,7 @@ const Home = ({
   startCountdown,
   getWorkout,
   workout: {
-    currentComponent,
+    currentView,
     exerciseList,
     totalRounds,
     difficulty: { level, on, off },
@@ -21,8 +21,8 @@ const Home = ({
   }, [getWorkout]);
 
   return (
-    <Fragment>
-      {currentComponent === 'Home' && <Link to='/about'>About</Link>}
+    <div className='bg-blue-200 text-blue-900 h-screen w-full'>
+      {currentView === 'Home' && <Link to='/about'>About</Link>}
       <h1>
         {totalRounds} Rounds of {exerciseList.length} Exercises ={' '}
         {totalRounds * exerciseList.length} Minutes
@@ -37,7 +37,7 @@ const Home = ({
           <li key={index}>{exercise.name}</li>
         ))}
       </ol>
-    </Fragment>
+    </div>
   );
 };
 

@@ -3,11 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { getWorkout, startCountdown } from '../../actions/workout';
 
-const Complete = ({
-  getWorkout,
-  startCountdown,
-  workout: { currentComponent },
-}) => {
+const Complete = ({ getWorkout, startCountdown, workout: { currentView } }) => {
   return (
     <Fragment>
       <h1>Fin!</h1>

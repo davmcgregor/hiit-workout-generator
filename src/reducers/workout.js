@@ -15,7 +15,7 @@ import {
 } from '../actions/types';
 
 const initialState = {
-  currentComponent: 'Home',
+  currentView: 'Home',
   seconds: 0,
   working: false,
   resting: false,
@@ -36,7 +36,7 @@ export default function (state = initialState, action) {
     case GET_WORKOUT:
       return {
         ...state,
-        currentComponent: 'Home',
+        currentView: 'Home',
         totalRounds: payload.randomRounds,
         difficulty: payload.randomDifficulty,
         exerciseList: payload.randomExercises,
@@ -45,7 +45,7 @@ export default function (state = initialState, action) {
     case COUNTDOWN_STARTED:
       return {
         ...state,
-        currentComponent: 'Countdown',
+        currentView: 'Countdown',
         countdown: true,
         completed: false,
       };
@@ -97,14 +97,14 @@ export default function (state = initialState, action) {
     case WORKOUT_STARTED:
       return {
         ...state,
-        currentComponent: 'Workout',
+        currentView: 'Workout',
         countdown: false,
         currentRound: 1,
       };
     case WORKOUT_COMPLETED:
       return {
         ...state,
-        currentComponent: 'Finish',
+        currentView: 'Finish',
         paused: false,
         working: false,
         resting: false,

@@ -4,13 +4,13 @@
 
 // import { Landing, Countdown, Workout, Complete } from '../index';
 
-// const Routes = ({ workout: { currentComponent } }) => {
+// const Routes = ({ workout: { currentView } }) => {
 //   return (
 //     <Fragment>
-//       {currentComponent === 'Landing' && <Landing />}
-//       {currentComponent === 'Countdown' && <Countdown />}
-//       {currentComponent === 'Workout' && <Workout />}
-//       {currentComponent === 'Finish' && <Complete />}
+//       {currentView === 'Landing' && <Landing />}
+//       {currentView === 'Countdown' && <Countdown />}
+//       {currentView === 'Workout' && <Workout />}
+//       {currentView === 'Finish' && <Complete />}
 //     </Fragment>
 //   );
 // };
