@@ -1,13 +1,16 @@
 import React, { Fragment, useEffect } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+
 import { getWorkout, startCountdown } from '../../actions/workout';
 
 import PropTypes from 'prop-types';
 
-const Landing = ({
+const Home = ({
   startCountdown,
   getWorkout,
   workout: {
+    currentComponent,
     exerciseList,
     totalRounds,
     difficulty: { level, on, off },
@@ -19,6 +22,7 @@ const Landing = ({
 
   return (
     <Fragment>
+      {currentComponent === 'Home' && <Link to='/about'>About</Link>}
       <h1>
         {totalRounds} Rounds of {exerciseList.length} Exercises ={' '}
         {totalRounds * exerciseList.length} Minutes
@@ -37,7 +41,7 @@ const Landing = ({
   );
 };
 
-Landing.propTypes = {
+Home.propTypes = {
   getWorkout: PropTypes.func.isRequired,
   startCountdown: PropTypes.func.isRequired,
   workout: PropTypes.object.isRequired,
@@ -47,6 +51,4 @@ const mapStateToProps = (state) => ({
   workout: state.workout,
 });
 
-export default connect(mapStateToProps, { getWorkout, startCountdown })(
-  Landing
-);
+export default connect(mapStateToProps, { getWorkout, startCountdown })(Home);

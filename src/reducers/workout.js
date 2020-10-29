@@ -15,7 +15,7 @@ import {
 } from '../actions/types';
 
 const initialState = {
-  currentComponent: 'Landing',
+  currentComponent: 'Home',
   seconds: 0,
   working: false,
   resting: false,
@@ -36,7 +36,7 @@ export default function (state = initialState, action) {
     case GET_WORKOUT:
       return {
         ...state,
-        currentComponent: 'Landing',
+        currentComponent: 'Home',
         totalRounds: payload.randomRounds,
         difficulty: payload.randomDifficulty,
         exerciseList: payload.randomExercises,
