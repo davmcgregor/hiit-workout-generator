@@ -3,10 +3,10 @@ import { Link } from 'react-router-dom';
 
 const About = () => {
   return (
-    <div className='bg-pink-200 text-pink-900 h-screen w-full'>
+    <div className='bg-indigo-200 text-indigo-900 h-screen w-full flex flex-col items-center'>
       <Link
         to='/'
-        className='absolute top-0 inset-x-0 text-center mx-auto font-extrabold text-3xl italic mt-8'
+        className='absolute top-0 inset-x-0 text-center mx-auto font-extrabold text-xl italic mt-4'
       >
         Hiit Workout Generator
       </Link>
@@ -14,7 +14,7 @@ const About = () => {
         <Link to='/'>Back</Link>
       </div>
       <div className='flex flex-col h-full items-center pt-24'>
-        <article className='prose lg:prose-xl'>
+        <article className='prose lg:prose-xl text-indigo-900'>
           <p>
             For years parents have espoused the health benefits of eating garlic
             bread with cheese to their children, with the food earning such an
@@ -27,7 +27,7 @@ const About = () => {
           </p>
         </article>
         <svg
-          class='w-64 h-64 flex items-center'
+          className='w-64 h-64 flex items-center'
           fill='none'
           stroke='currentColor'
           viewBox='0 0 24 24'

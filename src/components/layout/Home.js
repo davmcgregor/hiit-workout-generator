@@ -53,7 +53,7 @@ const Home = ({
 
   return (
     <div className={`${currentStyle} relative h-screen w-full`}>
-      <h1 className='absolute top-0 inset-x-0 text-center mx-auto font-extrabold text-2xl italic mt-6'>
+      <h1 className='absolute top-0 inset-x-0 text-center mx-auto font-extrabold text-xl italic mt-4'>
         Hiit Workout Generator
       </h1>
       {currentView === 'Home' && (
