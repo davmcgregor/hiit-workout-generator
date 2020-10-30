@@ -1,13 +1,13 @@
-import React, { Fragment, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import { getWorkout, startCountdown } from '../../actions/workout';
+import { getWorkout } from '../../actions/workout';
+import { Controls } from '../';
 
 import PropTypes from 'prop-types';
 
 const Home = ({
-  startCountdown,
   getWorkout,
   workout: {
     currentView,
@@ -21,17 +21,16 @@ const Home = ({
   }, [getWorkout]);
 
   return (
-    <div className='bg-blue-200 text-blue-900 h-screen w-full'>
+    <div className='relative bg-blue-200 text-blue-900 h-screen w-full'>
+      <h1 class='absolute top-0 inset-x-0 text-center mx-auto font-extrabold text-3xl italic mt-8'>
+        Hiit Workout Generator
+      </h1>
       {currentView === 'Home' && (
-        <div class='mt-2 mr-3 text-lg font-bold underline absolute top-0 right-0'>
+        <div class='mt-3 mr-3 font-bold underline absolute top-0 right-0'>
           <Link to='/about'>About</Link>
         </div>
       )}
-      <div class='flex flex-col justify-between items-center h-full'>
-        <h1 class=' font-extrabold text-3xl italic mt-6'>
-          Hiit Workout Generator
-        </h1>
-
+      <div class='flex flex-col justify-around items-center h-full pt-10'>
         <h1>
           {totalRounds} Rounds of {exerciseList.length} Exercises ={' '}
           {totalRounds * exerciseList.length} Minutes
@@ -45,8 +44,7 @@ const Home = ({
             <li key={index}>{exercise.name}</li>
           ))}
         </ol>
-        <button onClick={() => startCountdown()}>Begin</button>
-        <button onClick={() => getWorkout()}>Random</button>
+        <Controls />
       </div>
     </div>
   );
@@ -54,7 +52,6 @@ const Home = ({
 
 Home.propTypes = {
   getWorkout: PropTypes.func.isRequired,
-  startCountdown: PropTypes.func.isRequired,
   workout: PropTypes.object.isRequired,
 };
 
@@ -62,4 +59,4 @@ const mapStateToProps = (state) => ({
   workout: state.workout,
 });
 
-export default connect(mapStateToProps, { getWorkout, startCountdown })(Home);
+export default connect(mapStateToProps, { getWorkout })(Home);

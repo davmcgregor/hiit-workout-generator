@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const About = () => {
   return (
     <div className='bg-blue-200 text-blue-900 h-screen w-full'>
-      <div class='mt-2 mr-3 text-lg font-bold underline absolute top-0 right-0'>
+      <div class='mt-3 mr-3 font-bold underline absolute top-0 right-0'>
         <Link to='/'>Back</Link>
       </div>
       <div class='flex flex-col h-full items-center'>
