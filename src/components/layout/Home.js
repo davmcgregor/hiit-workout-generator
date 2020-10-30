@@ -22,21 +22,32 @@ const Home = ({
 
   return (
     <div className='bg-blue-200 text-blue-900 h-screen w-full'>
-      {currentView === 'Home' && <Link to='/about'>About</Link>}
-      <h1>
-        {totalRounds} Rounds of {exerciseList.length} Exercises ={' '}
-        {totalRounds * exerciseList.length} Minutes
-      </h1>
-      <h2>
-        Difficulty Level: {level} - {on} Second On // {off} Seconds Off
-      </h2>
-      <button onClick={() => startCountdown()}>Begin</button>
-      <button onClick={() => getWorkout()}>Random</button>
-      <ol>
-        {exerciseList.map((exercise, index) => (
-          <li key={index}>{exercise.name}</li>
-        ))}
-      </ol>
+      {currentView === 'Home' && (
+        <div class='mt-2 mr-3 text-lg font-bold underline absolute top-0 right-0'>
+          <Link to='/about'>About</Link>
+        </div>
+      )}
+      <div class='flex flex-col justify-between items-center h-full'>
+        <h1 class=' font-extrabold text-3xl italic mt-6'>
+          Hiit Workout Generator
+        </h1>
+
+        <h1>
+          {totalRounds} Rounds of {exerciseList.length} Exercises ={' '}
+          {totalRounds * exerciseList.length} Minutes
+        </h1>
+        <h2>
+          Difficulty Level: {level} - {on} Second On // {off} Seconds Off
+        </h2>
+
+        <ol>
+          {exerciseList.map((exercise, index) => (
+            <li key={index}>{exercise.name}</li>
+          ))}
+        </ol>
+        <button onClick={() => startCountdown()}>Begin</button>
+        <button onClick={() => getWorkout()}>Random</button>
+      </div>
     </div>
   );
 };
