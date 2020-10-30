@@ -5,7 +5,7 @@ import { getWorkout, startCountdown } from '../../actions/workout';
 import PropTypes from 'prop-types';
 
 const buttonStyles =
-  'inline-flex items-center justify-center uppercase tracking-wider text-white bg-cool-gray-600 hover:bg-cool-gray-500 focus:outline-none focus:border-cool-gray-700 focus:shadow-outline-cool-gray active:bg-cool-gray-700 transition ease-in-out duration-150 text-2xl py-5 px-10 rounded-lg mx-4 mb-8';
+  'inline-flex items-center justify-center uppercase tracking-wider text-white bg-cool-purple-600 hover:bg-cool-purple-500 focus:outline-none focus:border-cool-purple-700 focus:shadow-outline-cool-purple active:bg-cool-purple-700 transition ease-in-out duration-150 text-2xl py-5 px-10 rounded-lg mx-4 mb-8';
 
 const HomeButtons = ({ startCountdown, getWorkout }) => {
   return (

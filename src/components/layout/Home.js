@@ -3,15 +3,16 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import { getWorkout } from '../../actions/workout';
-import { Controls } from '../';
+import { Controls, Status } from '../';
 
 import PropTypes from 'prop-types';
 
 const homeStyle = 'bg-indigo-200 text-indigo-900';
-const workingStyle = 'bg-green-200 text-green-900';
-const restingStyle = 'bg-blue-200 text-blue-900';
-const pausedStyle = 'bg-orange-200 text-orange-900';
-const finishStyle = 'bg-cool-gray-200 cool-gray-900';
+const countdownStyle = 'bg-yellow-200 text-yellow-900';
+const workingStyle = 'bg-red-200 text-red-900';
+const restingStyle = 'bg-teal-200 text-teal-900';
+const pausedStyle = 'bg-cool-gray-200 text-cool-gray-900';
+const finishStyle = 'bg-purple-200 purple-900';
 
 const Home = ({
   getWorkout,
@@ -34,6 +35,8 @@ const Home = ({
   useEffect(() => {
     if (currentView === 'Home') {
       setCurrentStyle(homeStyle);
+    } else if (currentView === 'Countdown') {
+      setCurrentStyle(countdownStyle);
     } else if (currentView === 'Workout') {
       if (working) {
         setCurrentStyle(workingStyle);
@@ -50,15 +53,16 @@ const Home = ({
 
   return (
     <div className={`${currentStyle} relative h-screen w-full`}>
-      <h1 className='absolute top-0 inset-x-0 text-center mx-auto font-extrabold text-3xl italic mt-8'>
+      <h1 className='absolute top-0 inset-x-0 text-center mx-auto font-extrabold text-2xl italic mt-6'>
         Hiit Workout Generator
       </h1>
       {currentView === 'Home' && (
-        <div className='mt-3 mr-3 font-bold underline absolute top-0 right-0'>
+        <div className='mt-3 mr-3 font-bold hover:underline absolute top-0 right-0'>
           <Link to='/about'>About</Link>
         </div>
       )}
       <div className='flex flex-col justify-around items-center h-full pt-10'>
+        <Status />
         <h1>
           {totalRounds} Rounds of {exerciseList.length} Exercises ={' '}
           {totalRounds * exerciseList.length} Minutes

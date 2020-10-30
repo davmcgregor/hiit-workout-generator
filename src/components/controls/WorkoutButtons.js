@@ -5,13 +5,13 @@ import { skipTimer, togglePause } from '../../actions/workout';
 import PropTypes from 'prop-types';
 
 const workingButtonStyles =
-  'inline-flex items-center justify-center w-64 uppercase tracking-wider text-white bg-green-600 hover:bg-green-500 focus:outline-none focus:border-green-700 focus:shadow-outline-green active:bg-green-700 transition ease-in-out duration-300 text-2xl py-5 px-10 rounded-lg mx-4 mb-8';
+  'inline-flex items-center justify-center w-64 uppercase tracking-wider text-white bg-red-600 hover:bg-red-500 focus:outline-none focus:border-red-700 focus:shadow-outline-red active:bg-red-700 transition ease-in-out duration-300 text-2xl py-5 px-10 rounded-lg mx-4 mb-8';
 
 const restingButtonStyles =
-  'inline-flex items-center justify-center w-64 uppercase tracking-wider text-white bg-blue-600 hover:bg-blue-500 focus:outline-none focus:border-blue-700 focus:shadow-outline-blue active:bg-blue-700 transition ease-in-out duration-300 text-2xl py-5 px-10 rounded-lg mx-4 mb-8';
+  'inline-flex items-center justify-center w-64 uppercase tracking-wider text-white bg-teal-600 hover:bg-teal-500 focus:outline-none focus:border-teal-700 focus:shadow-outline-teal active:bg-teal-700 transition ease-in-out duration-300 text-2xl py-5 px-10 rounded-lg mx-4 mb-8';
 
 const pausedButtonStyles =
-  'inline-flex items-center justify-center w-64 uppercase tracking-wider text-white bg-orange-600 hover:bg-orange-500 focus:outline-none focus:border-orange-700 focus:shadow-outline-orange active:bg-orange-700 transition ease-in-out duration-300 text-2xl py-5 px-10 rounded-lg mx-4 mb-8';
+  'inline-flex items-center justify-center w-64 uppercase tracking-wider text-white bg-cool-gray-600 hover:bg-cool-gray-500 focus:outline-none focus:border-cool-gray-700 focus:shadow-outline-cool-gray active:bg-cool-gray-700 transition ease-in-out duration-300 text-2xl py-5 px-10 rounded-lg mx-4 mb-8';
 
 const WorkoutButtons = ({
   togglePause,
