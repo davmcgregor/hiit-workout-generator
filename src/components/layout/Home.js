@@ -3,12 +3,12 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import { getWorkout } from '../../actions/workout';
-import { Controls, Status } from '../';
+import { Controls, Status, Workout } from '../';
 
 import PropTypes from 'prop-types';
 
 const homeStyle = 'bg-indigo-200 text-indigo-900';
-const countdownStyle = 'bg-yellow-200 text-yellow-900';
+const countdownStyle = 'bg-indigo-200 text-indigo-900';
 const workingStyle = 'bg-red-200 text-red-900';
 const restingStyle = 'bg-teal-200 text-teal-900';
 const pausedStyle = 'bg-cool-gray-200 text-cool-gray-900';
@@ -52,7 +52,9 @@ const Home = ({
   }, [currentView, working, resting, paused]);
 
   return (
-    <div className={`${currentStyle} relative h-screen w-full`}>
+    <div
+      className={`${currentStyle} relative h-screen w-full transition ease-in-out duration-300`}
+    >
       <h1 className='absolute top-0 inset-x-0 text-center mx-auto font-extrabold text-xl italic mt-4'>
         Hiit Workout Generator
       </h1>
@@ -71,11 +73,7 @@ const Home = ({
           Difficulty Level: {level} - {on} Second On // {off} Seconds Off
         </h2>
 
-        <ol>
-          {exerciseList.map((exercise, index) => (
-            <li key={index}>{exercise.name}</li>
-          ))}
-        </ol>
+        <Workout />
         <Controls />
       </div>
     </div>
