@@ -6,11 +6,28 @@ import PropTypes from 'prop-types';
 const Exercises = ({ workout: { exerciseList } }) => {
   return (
     <Fragment>
-      <ol>
+      <ul className='mt-3 grid grid-cols-2 gap-5 sm:gap-6 sm:grid-cols-2 lg:grid-cols-4'>
         {exerciseList.map((exercise, index) => (
-          <li key={index}>{exercise.name}</li>
+          <li key={index} className='col-span-1 flex shadow-sm rounded-md'>
+            <div className='flex-shrink-0 flex items-center justify-center w-16 bg-gray-700 text-white text-3xl leading-5 font-medium rounded-l-md'>
+              {index + 1}
+            </div>
+            <div className='flex-1 flex items-center justify-between border-t border-r border-b border-gray-200 bg-white rounded-r-md truncate p-2'>
+              <div className='flex-1 px-2 md:px-4 py-1 text-sm leading-5 truncate '>
+                <p className='text-gray-900 whitespace-normal font-medium hover:text-gray-600 transition ease-in-out duration-150 mb-2 text-xl leading-tight'>
+                  {exercise.name}
+                  {exercise.bodyweight && (
+                    <span className='italic text-gray-500'> (bodyweight)</span>
+                  )}
+                </p>
+                <p className='text-gray-500 text-base	whitespace-normal'>
+                  {exercise.category}
+                </p>
+              </div>
+            </div>
+          </li>
         ))}
-      </ol>
+      </ul>
     </Fragment>
   );
 };

@@ -31,8 +31,8 @@ const Status = ({ workout: { currentView, working, resting, paused } }) => {
   return (
     currentView !== 'Countdown' && (
       <Fragment>
-        <h1 className='mt-10  text-3xl'>
-          <span className='font-bold underline'>Status:</span> {currentStatus}
+        <h1 className='mt-10 font-light text-3xl'>
+          Status: <span className='font-bold'>{currentStatus}</span>
         </h1>
       </Fragment>
     )

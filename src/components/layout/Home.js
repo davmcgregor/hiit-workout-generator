@@ -53,7 +53,7 @@ const Home = ({
 
   return (
     <div
-      className={`${currentStyle} relative h-screen w-full transition ease-in-out duration-300`}
+      class={`${currentStyle} relative h-screen px-4 sm:px-6 lg:px-8 transition ease-in-out duration-300`}
     >
       <h1 className='absolute top-0 inset-x-0 text-center mx-auto font-extrabold text-xl italic mt-4'>
         Hiit Workout Generator
@@ -63,7 +63,7 @@ const Home = ({
           <Link to='/about'>About</Link>
         </div>
       )}
-      <div className='flex flex-col justify-around items-center h-full pt-10'>
+      <div className=' flex flex-col justify-around items-center h-full pt-10'>
         <Status />
         <h1>
           {totalRounds} Rounds of {exerciseList.length} Exercises ={' '}

@@ -19,7 +19,7 @@ const AllExercises = [
   { category: 'Upper Body', name: 'Bent-over Rows', bodyweight: false },
   { category: 'Upper Body', name: 'Reverse Wide-grip Rows', bodyweight: false },
 
-  { category: 'Legs', name: 'Kettlebell/Dumbell Swings', bodyweight: false },
+  { category: 'Legs', name: 'Kettlebell / Dumbell Swings', bodyweight: false },
   { category: 'Legs', name: 'Squat, Curl & Press', bodyweight: false },
   { category: 'Legs', name: 'Backwards Lunge', bodyweight: false },
   { category: 'Legs', name: 'Forwards Lunge', bodyweight: false },
