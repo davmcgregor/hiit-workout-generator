@@ -14,7 +14,7 @@ const Exercises = ({ workout: { exerciseList } }) => {
             </div>
             <div className='flex-1 flex items-center justify-between border-t border-r border-b border-gray-200 bg-white rounded-r-md truncate p-2'>
               <div className='flex-1 px-2 md:px-4 py-1 text-sm leading-5 truncate '>
-                <p className='text-gray-900 whitespace-normal font-medium hover:text-gray-600 transition ease-in-out duration-150 mb-2 text-xl leading-tight'>
+                <p className='text-gray-900 whitespace-normal font-medium hover:text-gray-600 transition ease-in-out duration-300 mb-2 text-xl leading-tight'>
                   {exercise.name}
                   {exercise.bodyweight && (
                     <span className='italic text-gray-500'> (bodyweight)</span>

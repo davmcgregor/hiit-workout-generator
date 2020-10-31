@@ -2,6 +2,7 @@ export { default as Home } from './layout/Home';
 export { default as About } from './layout/About';
 
 export { default as Status } from './headers/Status';
+export { default as Details } from './headers/Details';
 
 export { default as Workout } from './workout/Workout';
 export { default as Exercises } from './workout/Exercises';
