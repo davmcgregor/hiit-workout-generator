@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 
 import PropTypes from 'prop-types';
 
 const Counter = ({ workout: { seconds } }) => {
+
   return (
     <h1 className={`font-semibold`} style={{ fontSize: '20rem' }}>
       {seconds}

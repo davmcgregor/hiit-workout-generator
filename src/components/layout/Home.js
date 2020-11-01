@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 
 import { getWorkout } from '../../actions/workout';
-import { Status, Details, Workout, Controls } from '../';
+import { Header, Workout, Controls } from '../';
 
 import PropTypes from 'prop-types';
+
+import useSound from 'use-sound';
+
+import shortbeep from './shortbeep.mp3';
+import longbeep from './longbeep.mp3';
 
 const homeStyle = 'bg-indigo-200 text-indigo-900';
 const countdownStyle = 'bg-indigo-200 text-indigo-900';
@@ -21,12 +25,23 @@ const Home = ({
     working,
     resting,
     paused,
+    seconds,
     exerciseList,
     totalRounds,
     difficulty: { level, on, off },
   },
 }) => {
   const [currentStyle, setCurrentStyle] = useState(homeStyle);
+  const [playshort] = useSound(shortbeep);
+  const [playlong] = useSound(longbeep);
+
+  useEffect(() => {
+    if (seconds <= 3 && seconds >= 1) {
+      playshort();
+    } else if (seconds === 0) {
+      playlong();
+    }
+  }, [seconds]);
 
   useEffect(() => {
     getWorkout();
@@ -53,22 +68,11 @@ const Home = ({
 
   return (
     <div
-      className={`${currentStyle} relative h-screen px-4 sm:px-6 lg:px-8 transition ease-in-out duration-300`}
-    > 
-      <h1 className='absolute top-0 inset-x-0 text-center mx-auto font-extrabold text-xl italic mt-4'>
-        Hiit Workout Generator
-      </h1>
-      {currentView === 'Home' && (
-        <div className='mt-3 mr-3 font-bold hover:underline absolute top-0 right-0'>
-          <Link to='/about'>About</Link>
-        </div>
-      )}
-      <div className=' flex flex-col justify-around items-center h-full pt-10'>
-        <Status />
-        <Details />
-        <Workout />
-        <Controls />
-      </div>
+      className={`flex flex-col h-screen justify-between ${currentStyle} px-4 sm:px-6 lg:px-8 transition ease-in-out duration-300`}
+    >
+      <Header />
+      <Workout className='mb-auto' />
+      <Controls />
     </div>
   );
 };

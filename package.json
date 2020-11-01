@@ -23,6 +23,7 @@
     "redux-devtools-extension": "^2.13.8",
     "redux-thunk": "^2.3.0",
     "tailwindcss": "^1.9.6",
+    "use-sound": "^1.0.2",
     "web-vitals": "^0.2.4"
   },
   "scripts": {
