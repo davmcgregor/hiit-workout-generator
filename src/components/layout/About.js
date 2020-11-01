@@ -1,18 +1,26 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import { VolumeToggle } from '../';
+
 const About = () => {
   return (
-    <div className='bg-indigo-200 text-indigo-900 h-screen w-full flex flex-col items-center'>
-      <Link
-        to='/'
-        className='absolute top-0 inset-x-0 text-center mx-auto font-extrabold text-xl italic mt-4'
-      >
-        Hiit Workout Generator
-      </Link>
-      <div className='mt-3 mr-3 font-bold hover:underline absolute top-0 right-0'>
-        <Link to='/'>Back</Link>
+    <div className='bg-indigo-200 text-indigo-900 flex flex-col h-screen  transition ease-in-out duration-300'>
+      <div className='flex justify-between items-center text-center w-screen my-6 px-4 md:px-8'>
+        <VolumeToggle />
+        <Link to='/' className='font-extrabold text-2xl md:text-4xl italic'>
+          Hiit Workout Generator
+        </Link>
+        <div className='w-24 text-right'>
+          <Link
+            to='/'
+            className='font-bold text-lg md:text-2xl italic underline'
+          >
+            Back
+          </Link>
+        </div>
       </div>
+
       <div className='flex flex-col h-full items-center pt-24'>
         <article className='prose lg:prose-xl text-indigo-900'>
           <p>

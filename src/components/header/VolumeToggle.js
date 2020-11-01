@@ -6,7 +6,7 @@ import { toggleVolume } from '../../actions/workout';
 
 const VolumeToggle = ({ toggleVolume, workout: { volume } }) => {
   return (
-    <div className='cursor-pointer' onClick={() => toggleVolume()}>
+    <div className='cursor-pointer w-24' onClick={() => toggleVolume()}>
       {volume ? (
         <svg
           className='w-12 h-12'

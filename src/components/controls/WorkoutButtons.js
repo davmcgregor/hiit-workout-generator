@@ -35,12 +35,16 @@ const WorkoutButtons = ({
   };
 
   useEffect(() => {
-    if (working) {
-      setButtonStyle(workingButtonStyles);
-    } else if (resting) {
-      setButtonStyle(restingButtonStyles);
+    if (paused) {
+      setButtonStyle(pausedButtonStyles);
+    } else {
+      if (working) {
+        setButtonStyle(workingButtonStyles);
+      } else if (resting) {
+        setButtonStyle(restingButtonStyles);
+      }
     }
-  }, [working, resting]);
+  }, [paused, working, resting]);
 
   return (
     <div>

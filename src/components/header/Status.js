@@ -2,14 +2,13 @@ import React, { Fragment, useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-const homeStatus = 'Select workout';
-const workingStatus = 'Work';
-const restingStatus = 'Rest';
-const pausedStatus = 'Paused';
-const finishStatus = 'Workout complete!';
-
 const Status = ({ workout: { currentView, working, resting, paused } }) => {
-  const [currentStatus, setCurrentStatus] = useState(homeStatus);
+  const [currentStatus, setCurrentStatus] = useState('Work');
+
+  const workingStatus = 'Work';
+  const restingStatus = 'Rest';
+  const pausedStatus = 'Paused';
+  const finishStatus = 'Workout complete!';
 
   useEffect(() => {
     if (currentView === 'Home') {
@@ -33,6 +32,19 @@ const Status = ({ workout: { currentView, working, resting, paused } }) => {
       <Fragment>
         <h1 className='font-extrabold uppercase text-4xl italic'>
           {currentStatus}
+          {/* {paused ? (
+            working ? (
+              <span className='font-bold capitalize'>
+                {' '}
+                {'('}Working{')'}
+              </span>
+            ) : (
+              <span className='font-bold capitalize'>
+                {' '}
+                {'('}Resting{')'}
+              </span>
+            )
+          ) : null} */}
         </h1>
       </Fragment>
     )

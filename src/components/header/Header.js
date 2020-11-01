@@ -13,16 +13,16 @@ const Header = ({ workout: { currentView } }) => {
       <VolumeToggle />
       <div>
         {currentView === 'Home' ? (
-          <h1 className='font-extrabold text-center text-4xl italic'>
+          <h1 className='font-extrabold text-center text-2xl md:text-4xl italic'>
             Hiit Workout Generator
           </h1>
         ) : (
           <Status />
         )}
       </div>
-      <div>
+      <div className='w-24'>
         {currentView === 'Home' ? (
-          <div className='font-bold hover:underline'>
+          <div className='font-bold text-right text-lg md:text-2xl italic underline'>
             <Link to='/about'>About</Link>
           </div>
         ) : (
