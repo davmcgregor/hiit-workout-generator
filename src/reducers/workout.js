@@ -26,6 +26,7 @@ const initialState = {
   totalRounds: 0,
   currentRound: 0,
   currentExercise: 0,
+  exerciseCount: 0,
   exerciseList: [],
   difficulty: {},
   volume: true,
@@ -43,6 +44,7 @@ export default function (state = initialState, action) {
         difficulty: payload.randomDifficulty,
         exerciseList: payload.randomExercises,
         completed: false,
+        exerciseCount: 0,
       };
     case COUNTDOWN_STARTED:
       return {
@@ -50,6 +52,7 @@ export default function (state = initialState, action) {
         currentView: 'Countdown',
         countdown: true,
         completed: false,
+        exerciseCount: 0,
       };
     case TIMER_STARTED:
       return {
@@ -95,6 +98,7 @@ export default function (state = initialState, action) {
         ...state,
         resting: true,
         working: false,
+        exerciseCount: state.exerciseCount + 1,
       };
     case WORKOUT_STARTED:
       return {
@@ -114,6 +118,7 @@ export default function (state = initialState, action) {
         seconds: 0,
         currentRound: 0,
         currentExercise: 0,
+        exerciseCount: state.exerciseCount + 1,
       };
     case NEXT_EXERCISE:
       return {

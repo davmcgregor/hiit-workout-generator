@@ -3,6 +3,7 @@ export { default as About } from './layout/About';
 
 export { default as Header } from './header/Header';
 export { default as VolumeToggle } from './header/VolumeToggle';
+export { default as PercentageComplete } from './header/PercentageComplete';
 
 export { default as Status } from './header/Status';
 
