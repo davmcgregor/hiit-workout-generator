@@ -12,6 +12,7 @@ import {
   TIMER_SKIP,
   NEXT_EXERCISE,
   NEXT_REST,
+  TOGGLE_VOLUME,
 } from '../actions/types';
 
 const initialState = {
@@ -27,6 +28,7 @@ const initialState = {
   currentExercise: 0,
   exerciseList: [],
   difficulty: {},
+  volume: true,
 };
 
 export default function (state = initialState, action) {
@@ -134,6 +136,11 @@ export default function (state = initialState, action) {
         seconds: payload,
         working: false,
         resting: true,
+      };
+    case TOGGLE_VOLUME:
+      return {
+        ...state,
+        volume: !state.volume,
       };
     default:
       return state;

@@ -12,6 +12,7 @@ import {
   WORKOUT_COMPLETED,
   NEXT_EXERCISE,
   NEXT_REST,
+  TOGGLE_VOLUME,
 } from './types';
 
 import generateWorkout from '../utils/generateWorkout';
@@ -187,4 +188,10 @@ export const togglePause = () => (dispatch, getState) => {
       type: TIMER_PAUSED,
     });
   }
+};
+
+export const toggleVolume = () => (dispatch) => {
+  dispatch({
+    type: TOGGLE_VOLUME,
+  });
 };

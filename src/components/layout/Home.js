@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import { getWorkout } from '../../actions/workout';
 import { Header, Workout, Controls } from '../';
-
-import PropTypes from 'prop-types';
 
 import useSound from 'use-sound';
 
@@ -29,6 +28,7 @@ const Home = ({
     exerciseList,
     totalRounds,
     difficulty: { level, on, off },
+    volume,
   },
 }) => {
   const [currentStyle, setCurrentStyle] = useState(homeStyle);
@@ -36,11 +36,13 @@ const Home = ({
   const [playlong] = useSound(longbeep);
 
   useEffect(() => {
-    if (currentView === 'Countdown' || currentView === 'Workout') {
-      if (seconds <= 3 && seconds >= 1) {
-        playshort();
-      } else if (seconds === 0) {
-        playlong();
+    if (volume) {
+      if (currentView === 'Countdown' || currentView === 'Workout') {
+        if (seconds <= 3 && seconds >= 1) {
+          playshort();
+        } else if (seconds === 0) {
+          playlong();
+        }
       }
     }
   }, [seconds]);

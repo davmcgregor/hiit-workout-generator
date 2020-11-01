@@ -5,15 +5,15 @@ import { connect } from 'react-redux';
 
 import PropTypes from 'prop-types';
 
-import { Status } from '../';
+import { Status, VolumeToggle } from '../';
 
 const Header = ({ workout: { currentView } }) => {
   return (
-    <div className='flex justify-between w-screen my-6'>
-      <div>Volume</div>
+    <div className='flex justify-between items-center w-screen my-6 px-4 md:px-8'>
+      <VolumeToggle />
       <div>
         {currentView === 'Home' ? (
-          <h1 className='font-extrabold text-4xl italic'>
+          <h1 className='font-extrabold text-center text-4xl italic'>
             Hiit Workout Generator
           </h1>
         ) : (
