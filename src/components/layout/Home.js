@@ -36,10 +36,12 @@ const Home = ({
   const [playlong] = useSound(longbeep);
 
   useEffect(() => {
-    if (seconds <= 3 && seconds >= 1) {
-      playshort();
-    } else if (seconds === 0) {
-      playlong();
+    if (currentView === 'Countdown' || currentView === 'Workout') {
+      if (seconds <= 3 && seconds >= 1) {
+        playshort();
+      } else if (seconds === 0) {
+        playlong();
+      }
     }
   }, [seconds]);
 
@@ -68,7 +70,7 @@ const Home = ({
 
   return (
     <div
-      className={`flex flex-col h-screen justify-between ${currentStyle} px-4 sm:px-6 lg:px-8 transition ease-in-out duration-300`}
+      className={`flex flex-col h-screen justify-between items-center ${currentStyle} px-4 sm:px-6 lg:px-8 transition ease-in-out duration-300`}
     >
       <Header />
       <Workout className='mb-auto' />

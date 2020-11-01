@@ -3,10 +3,10 @@ export { default as About } from './layout/About';
 
 export { default as Header } from './header/Header';
 export { default as Status } from './header/Status';
-export { default as Details } from './header/Details';
 
 export { default as Workout } from './workout/Workout';
 export { default as Exercises } from './workout/Exercises';
+export { default as Details } from './workout/Details';
 export { default as Counter } from './workout/Counter';
 
 export { default as Controls } from './controls/Controls';

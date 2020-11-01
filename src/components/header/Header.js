@@ -5,24 +5,30 @@ import { connect } from 'react-redux';
 
 import PropTypes from 'prop-types';
 
-import { Status, Details } from '../';
+import { Status } from '../';
 
 const Header = ({ workout: { currentView } }) => {
   return (
-    <div>
-      <h1 className='absolute top-0 inset-x-0 text-center mx-auto font-extrabold text-xl italic mt-4'>
-        Hiit Workout Generator
-      </h1>
-      {currentView === 'Home' && (
-        <div className='mt-3 mr-3 font-bold hover:underline absolute top-0 right-0'>
-          <Link to='/about'>About</Link>
-        </div>
-      )}
-      <div className=' flex flex-col justify-around items-center h-full pt-10'>
-        <Status />
+    <div className='flex justify-between w-screen my-6'>
+      <div>Volume</div>
+      <div>
+        {currentView === 'Home' ? (
+          <h1 className='font-extrabold text-4xl italic'>
+            Hiit Workout Generator
+          </h1>
+        ) : (
+          <Status />
+        )}
       </div>
-      <Status />
-      <Details />
+      <div>
+        {currentView === 'Home' ? (
+          <div className='font-bold hover:underline'>
+            <Link to='/about'>About</Link>
+          </div>
+        ) : (
+          <div>%age complete</div>
+        )}
+      </div>
     </div>
   );
 };
