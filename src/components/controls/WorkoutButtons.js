@@ -55,7 +55,7 @@ const WorkoutButtons = ({
             togglePause();
             changeButtonStyle();
           }}
-          className={`${buttonStyle} w-auto md:w-64 inline-flex items-center justify-center uppercase tracking-wider text-white  transition ease-in-out duration-300 text-2xl py-5 px-10 rounded-lg mx-4`}
+          className={`${buttonStyle} w-auto md:w-64 inline-flex items-center justify-center uppercase tracking-wider text-white  transition ease-in-out duration-300 text-lg md:text-2xl py-2 md:py-5 px-6 md:px-10 rounded-lg mx-2 md:mx-4`}
         >
           {paused ? (
             <svg
@@ -101,7 +101,7 @@ const WorkoutButtons = ({
         <button
           type='button'
           onClick={() => skipTimer()}
-          className={`${buttonStyle} w-auto md:w-64 inline-flex items-center justify-center uppercase tracking-wider text-white transition ease-in-out duration-300 text-2xl py-5 px-10 rounded-lg mx-4`}
+          className={`${buttonStyle} w-auto md:w-64 inline-flex items-center justify-center uppercase tracking-wider text-white transition ease-in-out duration-300 text-lg md:text-2xl py-2 md:py-5 px-6 md:px-10 rounded-lg mx-2 md:mx-4`}
         >
           <svg
             className='w-12 h-12 -ml-0.5 mr-2'
