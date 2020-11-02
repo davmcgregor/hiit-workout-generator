@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 const Exercises = ({ workout: { exerciseList } }) => {
   return (
     <Fragment>
-      <ul className='mt-3 grid grid-cols-2 gap-5 sm:gap-6 sm:grid-cols-2 lg:grid-cols-4'>
+      <ul className='mt-3 grid grid-cols-2 gap-1 md:gap-5 sm:gap-6 sm:grid-cols-2 lg:grid-cols-4'>
         {exerciseList.map((exercise, index) => (
           <li
             key={index}

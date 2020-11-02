@@ -75,7 +75,7 @@ const Home = ({
       className={`flex flex-col h-screen justify-between overflow-y-auto items-center ${currentStyle} px-4 sm:px-6 lg:px-8 transition ease-in-out duration-300`}
     >
       <Header />
-      <Workout className='overflow-y-auto' />
+      <Workout />
       <Controls />
     </div>
   );
