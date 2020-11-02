@@ -8,7 +8,10 @@ const Exercises = ({ workout: { exerciseList } }) => {
     <Fragment>
       <ul className='mt-3 grid grid-cols-2 gap-5 sm:gap-6 sm:grid-cols-2 lg:grid-cols-4'>
         {exerciseList.map((exercise, index) => (
-          <li key={index} className='col-span-1 flex shadow-sm rounded-md'>
+          <li
+            key={index}
+            className='h-20 md:h-auto col-span-1 flex shadow-sm rounded-md'
+          >
             <div className='flex-shrink-0 flex items-center justify-center w-16 bg-gray-700 text-white text-3xl leading-5 font-medium rounded-l-md'>
               {index + 1}
             </div>

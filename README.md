@@ -2,7 +2,7 @@
 
 ## User Stories
 
-### Core functionality
+### MVP
 
 ```
 As a user,
@@ -31,11 +31,6 @@ I want to constantly see a countdown for my workout/rest
 ```
 ```
 As a user,
-On completing a workout,
-I want to see a celebratory sceen
-```
-```
-As a user,
 To prepare for my exercises,
 I want to know which ones require a dumbell and which are bodyweight
 ```
@@ -44,11 +39,6 @@ As a user,
 To prepare for my exercises,
 I want to know what exercise is coming up next during my rest periods
 ```
-
-
-
-
-
 ```
 As a user,
 To finish a workout correctly,
@@ -69,45 +59,39 @@ As a user,
 To know when a segment is starting/finishing,
 I want to hear a 3 second beeper countdown
 ```
-
-### Extra
-
 ```
 As a user,
 To engage better with the app,
 I want it to be styled nicely with green/orange start/wait colours
 ```
 
+### Further Improvements
+
+```
+As a user,
+On completing a workout,
+I want to see a celebratory sceen on finishing a workout
+```
 ```
 As a user,
 To get a complete view of my workout,
-I want to see the progress bar to name all exercises in a round, and what round out of the total I am on
+I want to see the progress bar and the names of all exercises in a round
 ```
-
 ```
 As a user,
 To use the app on my phone,
-I want it to be responsive
+I want it to be mobile friendly
 ```
-
 ```
 As a user,
 To keep up motivation,
-I want to see a 'last round' alert on the final round
+I want to see a 'last round' alert on final rounds and the last exercise
 ```
-
 ```
 As a user,
 To keep me motivated during rest breaks,
 I want to see random motivational quotes and messages
 ```
-
-```
-As a user,
-To keep challenging myself,
-I want to be able to build custom workouts
-```
-
 ```
 As a user,
 To keep challenging myself,
