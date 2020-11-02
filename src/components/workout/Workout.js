@@ -7,8 +7,8 @@ const Workout = ({ workout: { currentView } }) => {
   return (
     <div
       className={`text-center flex flex-col justify-center items-center ${
-        currentView === 'Home' && 'mb-3 md:mb-0'
-      } my-auto`}
+        currentView === 'Home' ? 'my-3' : 'my-6'
+      }`}
     >
       <Details />
       {currentView === 'Home' ? <Exercises /> : <Counter />}
