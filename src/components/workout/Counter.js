@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 
 const Counter = ({ workout: { seconds } }) => {
   return (
-    <h1 className={`font-semibold`} style={{ fontSize: '20em' }}>
+    <h1 className={`font-semibold`} style={{ fontSize: '20rem' }}>
       {seconds}
     </h1>
   );
