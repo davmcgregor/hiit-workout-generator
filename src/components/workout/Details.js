@@ -16,12 +16,12 @@ const Details = ({
   },
 }) => {
   const homeDetails = (
-    <div className='text-center mb-10'>
-      <h1 className='text-5xl font-semibold'>
+    <div className='text-center mb-2 md:mb-10'>
+      <h1 className='text-3xl md:text-5xl font-semibold'>
         {totalRounds} Rounds {'('}
         {totalRounds * exerciseList.length} Minutes Total{')'}
       </h1>
-      <h1 className='text-3xl font-semibold'>
+      <h1 className='text-2xl md:text-3xl font-semibold'>
         {work} seconds work // {rest} seconds rest {'('}
         {level}
         {')'}
@@ -35,12 +35,12 @@ const Details = ({
         Round {currentRound}/{totalRounds}
       </h1>
       {working && (
-        <h1 className='text-5xl font-semibold'>
+        <h1 className='text-3xl md:text-5xl'>
           {currentExercise} {exerciseList[currentExercise - 1]['name']}
         </h1>
       )}
       {resting && (
-        <h1 className='text-5xl italic'>
+        <h1 className='text-3xl md:text-5xl italic'>
           Next:{' '}
           {
             exerciseList[

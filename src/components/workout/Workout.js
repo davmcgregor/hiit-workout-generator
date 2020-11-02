@@ -5,7 +5,11 @@ import PropTypes from 'prop-types';
 
 const Workout = ({ workout: { currentView } }) => {
   return (
-    <div className='text-center flex flex-col justify-center items-center my-auto'>
+    <div
+      className={`text-center flex flex-col justify-center items-center ${
+        currentView === 'Home' && 'mb-3 md:mb-0'
+      } my-auto`}
+    >
       <Details />
       {currentView === 'Home' ? <Exercises /> : <Counter />}
     </div>
