@@ -1,15 +1,15 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
 import { getWorkout, startCountdown } from '../../actions/workout';
 
 import PropTypes from 'prop-types';
 
 const buttonStyles =
-  'inline-flex items-center justify-center uppercase tracking-wider text-white bg-purple-600 hover:bg-purple-500 focus:outline-none focus:border-purple-700 focus:shadow-outline-purple active:bg-purple-700 transition ease-in-out duration-300 text-2xl py-5 px-10 rounded-lg mx-4 mb-8';
+  'inline-flex items-center justify-center uppercase tracking-wider text-white bg-purple-600 hover:bg-purple-500 focus:outline-none focus:border-purple-700 focus:shadow-outline-purple active:bg-purple-700 transition ease-in-out duration-300 text-2xl py-5 px-10 rounded-lg mx-4 ';
 
 const HomeButtons = ({ startCountdown, getWorkout }) => {
   return (
-    <div>
+    <Fragment>
       <span className='inline-flex rounded-md'>
         <button
           type='button'
@@ -56,7 +56,7 @@ const HomeButtons = ({ startCountdown, getWorkout }) => {
           Repeat Workout
         </button>
       </span>
-    </div>
+    </Fragment>
   );
 };
 

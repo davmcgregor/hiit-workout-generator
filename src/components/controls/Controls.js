@@ -7,11 +7,11 @@ import PropTypes from 'prop-types';
 
 const Controls = ({ workout: { currentView } }) => {
   return (
-    <Fragment>
+    <div className='flex justify-center items-center w-screen mt-auto mb-12 px-4 md:px-8'>
       {currentView === 'Home' && <HomeButtons />}
       {currentView === 'Workout' && <WorkoutButtons />}
       {currentView === 'Finish' && <FinishButtons />}
-    </Fragment>
+    </div>
   );
 };
 

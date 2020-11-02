@@ -1,15 +1,15 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
 import { getWorkout, startCountdown } from '../../actions/workout';
 
 import PropTypes from 'prop-types';
 
 const buttonStyles =
-  'inline-flex items-center justify-center w-64 uppercase tracking-wider text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition ease-in-out duration-300 text-2xl py-5 px-10 rounded-lg mx-4 mb-8';
+  'inline-flex items-center justify-center w-64 uppercase tracking-wider text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition ease-in-out duration-300 text-2xl py-5 px-10 rounded-lg mx-4';
 
 const HomeButtons = ({ startCountdown, getWorkout }) => {
   return (
-    <div>
+    <Fragment>
       <span className='inline-flex rounded-md'>
         <button
           type='button'
@@ -40,7 +40,11 @@ const HomeButtons = ({ startCountdown, getWorkout }) => {
         </button>
       </span>
       <span className='inline-flex rounded-md'>
-        <button type='button' onClick={() => getWorkout()} className={buttonStyles}>
+        <button
+          type='button'
+          onClick={() => getWorkout()}
+          className={buttonStyles}
+        >
           <svg
             className='w-12 h-12 -ml-0.5 mr-2'
             fill='none'
@@ -58,7 +62,7 @@ const HomeButtons = ({ startCountdown, getWorkout }) => {
           Random
         </button>
       </span>
-    </div>
+    </Fragment>
   );
 };
 

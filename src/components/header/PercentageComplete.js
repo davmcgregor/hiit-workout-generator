@@ -11,10 +11,12 @@ const PercentageComplete = ({
   return (
     <div className='w-24 text-right'>
       <dl>
-        <dd class='text-4xl leading-7 font-semibold'>
+        <dd className='text-4xl leading-7 font-semibold'>
           {completed ? '100' : PercentageComplete}%
         </dd>
-        <dt class='text-base font-medium text-gray-900 truncate'>Complete</dt>
+        <dt className='text-base font-medium text-gray-900 truncate'>
+          Complete
+        </dt>
       </dl>
     </div>
   );

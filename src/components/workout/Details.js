@@ -16,32 +16,32 @@ const Details = ({
   },
 }) => {
   const homeDetails = (
-    <Fragment>
-      <h1 className='text-4xl'>
+    <div className='text-center mb-10'>
+      <h1 className='text-5xl font-semibold'>
         {totalRounds} Rounds {'('}
         {totalRounds * exerciseList.length} Minutes Total{')'}
       </h1>
-      <h1 className='text-4xl'>
+      <h1 className='text-3xl font-semibold'>
         {work} seconds work // {rest} seconds rest {'('}
         {level}
         {')'}
       </h1>
-    </Fragment>
+    </div>
   );
 
   const workoutDetails = (
-    <Fragment>
-      <h1 className='text-4xl'>
-        Round {currentRound} of {totalRounds}
+    <div className='text-center'>
+      <h1 className='text-3xl font-semibold'>
+        Round {currentRound}/{totalRounds}
       </h1>
       {working && (
-        <h1 className='text-4xl'>
-          {exerciseList[currentExercise - 1]['name']}
+        <h1 className='text-5xl font-semibold'>
+          {currentExercise} {exerciseList[currentExercise - 1]['name']}
         </h1>
       )}
       {resting && (
-        <h1 className='text-4xl'>
-          Up Next:{' '}
+        <h1 className='text-5xl italic'>
+          Next:{' '}
           {
             exerciseList[
               currentExercise === exerciseList.length ? 0 : currentExercise
@@ -49,17 +49,17 @@ const Details = ({
           }
         </h1>
       )}
-    </Fragment>
+    </div>
   );
 
   return (
-    <div className='text-center'>
+    <Fragment>
       {currentView === 'Countdown' || currentView === 'Finish'
         ? null
         : currentView === 'Home'
         ? homeDetails
         : workoutDetails}
-    </div>
+    </Fragment>
   );
 };
 

@@ -1,11 +1,14 @@
 import React, { Fragment } from 'react';
-import { Exercises, Counter } from '../';
+import { Exercises, Counter, Details } from '../';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 const Workout = ({ workout: { currentView } }) => {
   return (
-    <Fragment>{currentView === 'Home' ? <Exercises /> : <Counter />}</Fragment>
+    <div className='text-center flex flex-col justify-center items-center my-auto'>
+      <Details />
+      {currentView === 'Home' ? <Exercises /> : <Counter />}
+    </div>
   );
 };
 
