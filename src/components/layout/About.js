@@ -8,7 +8,10 @@ const About = () => {
     <div className='bg-indigo-200 text-indigo-900 min-h-screen flex flex-col justify-between h-full px-4 sm:px-6 lg:px-8 items-center transition ease-in-out duration-300'>
       <div className='flex justify-between items-center text-center w-screen my-6 px-4 md:px-8'>
         <VolumeToggle />
-        <Link to='/' className='font-extrabold text-2xl md:text-4xl italic'>
+        <Link
+          to='/'
+          className='font-extrabold leading-8 text-center text-3xl md:text-4xl italic'
+        >
           Hiit Workout Generator
         </Link>
         <div className='w-24 text-right'>
