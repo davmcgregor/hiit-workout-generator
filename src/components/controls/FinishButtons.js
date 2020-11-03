@@ -5,7 +5,7 @@ import { getWorkout, startCountdown } from '../../actions/workout';
 import PropTypes from 'prop-types';
 
 const buttonStyles =
-  'inline-flex items-center justify-center uppercase tracking-wider w-auto md:w-64 text-white bg-purple-600 hover:bg-purple-500 focus:outline-none focus:border-purple-700 focus:shadow-outline-purple active:bg-purple-700 transition ease-in-out duration-300 text-lg md:text-2xl py-2 md:py-5 px-6 md:px-10 rounded-lg mx-2 md:mx-4 leading-7';
+  'inline-flex items-center justify-center uppercase tracking-wider w-auto md:w-64 text-white bg-purple-600 hover:bg-purple-500 focus:outline-none focus:border-purple-700 focus:shadow-outline-purple active:bg-purple-700 transition ease-in-out duration-300 md:text-2xl py-2 md:py-5 px-2 md:px-10 rounded-lg mx-2 md:mx-4 leading-5';
 
 const HomeButtons = ({ startCountdown, getWorkout }) => {
   return (
@@ -17,7 +17,7 @@ const HomeButtons = ({ startCountdown, getWorkout }) => {
           className={buttonStyles}
         >
           <svg
-            className='w-12 h-12 -ml-0.5 mr-2'
+            className='w-12 h-12 -ml-0.5 md:mr-2'
             fill='none'
             stroke='currentColor'
             viewBox='0 0 24 24'
@@ -40,7 +40,7 @@ const HomeButtons = ({ startCountdown, getWorkout }) => {
           className={buttonStyles}
         >
           <svg
-            className='w-12 h-12 -ml-0.5 mr-2'
+            className='w-12 h-12 -ml-0.5 md:mr-2'
             fill='none'
             stroke='currentColor'
             viewBox='0 0 24 24'
