@@ -7,7 +7,7 @@ const Workout = ({ workout: { currentView } }) => {
   return (
     <div
       className={`text-center flex flex-col justify-center items-center ${
-        currentView === 'Home' ? 'my-3' : 'my-6'
+        currentView === 'Home' && 'my-3'
       }`}
     >
       <Details />

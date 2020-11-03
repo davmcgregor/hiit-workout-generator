@@ -1,3 +1,13 @@
+.countertext {
+  font-size: 20rem;
+}
+
+@media (max-width: 768px) {
+  .countertext {
+    font-size: 15rem;
+  }
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
