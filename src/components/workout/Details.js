@@ -36,7 +36,7 @@ const Details = ({
       </h1>
       {working && (
         <h1 className='text-3xl md:text-5xl'>
-          {currentExercise} {exerciseList[currentExercise - 1]['name']}
+          {currentExercise}. {exerciseList[currentExercise - 1]['name']}
         </h1>
       )}
       {resting && (
