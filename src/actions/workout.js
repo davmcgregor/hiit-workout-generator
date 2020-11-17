@@ -82,7 +82,7 @@ export const startCountdown = () => (dispatch) => {
     type: COUNTDOWN_STARTED,
   });
 
-  dispatch(startTimer({ seconds: 3 }));
+  dispatch(startTimer({ seconds: 5 }));
 };
 
 export const startExercise = () => (dispatch, getState) => {
