@@ -140,8 +140,8 @@ export const skipTimer = () => (dispatch, getState) => {
       type: TIMER_SKIP,
     });
     clearInterval(timer);
-    if (workout.seconds > 3) {
-      dispatch(startTimer({ seconds: 3 }));
+    if (workout.seconds > 5) {
+      dispatch(startTimer({ seconds: 5 }));
     } else {
       if (workout.resting) {
         dispatch(startExercise());
