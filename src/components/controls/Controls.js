@@ -9,7 +9,7 @@ const Controls = ({ workout: { currentView } }) => {
   return (
     <div
       className={`flex justify-center items-center w-screen ${
-        currentView === 'Home' ? 'mt-auto mb-12' : 'mt-12 mb-auto'
+        currentView === 'Home' ? 'mt-auto mb-12' : 'mb-auto'
       } px-8 md:px-8`}
     >
       {currentView === 'Home' && <HomeButtons />}
